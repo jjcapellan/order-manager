@@ -11,67 +11,69 @@
 </head>
 
 <body>
+    <div class="wrapper">
 
-    <!-- MENU SCREEN -->
-    <div id="menu" class="container">
-        <a href="#clients" class="bt-link">CLIENTS</a>
-        <a href="#products" class="bt-link">PRODUCTS</a>
-        <a href="#orders" class="bt-link">ORDERS</a>
-    </div>
-
-    <!-- CLIENTS SCREEN -->
-    <div id="clients" class="container">
-        <div class="bar">CLIENTS</div>
-        <div class="list-panel" id="clientsList">
-            <table id="clientsTable" data-row=""></table>
+        <!-- MENU SCREEN -->
+        <div id="menu" class="container">
+            <a href="#clients" class="bt-link">CLIENTS</a>
+            <a href="#products" class="bt-link">PRODUCTS</a>
+            <a href="#orders" class="bt-link">ORDERS</a>
         </div>
-        <div class="bar">
-            <a href="#menu">
-                <object data="assets/icons/arrow_back_white_48dp.svg"></object>
-            </a>
-            <a onclick="delClient();">
-                <object data="assets/icons/delete_white_48dp.svg"></object>
-            </a>
-            <a href="#add-client">
-                <object data="assets/icons/add_white_48dp.svg"></object>
-            </a>
+
+        <!-- CLIENTS SCREEN -->
+        <div id="clients" class="container">
+            <div class="bar">CLIENTS</div>
+            <div class="list-panel" id="clientsList">
+                <table id="clientsTable" data-row=""></table>
+            </div>
+            <div class="bar">
+                <a href="#menu">
+                    <object data="assets/icons/arrow_back_white_48dp.svg"></object>
+                </a>
+                <a onclick="delClient();">
+                    <object data="assets/icons/delete_white_48dp.svg"></object>
+                </a>
+                <a href="#add-client">
+                    <object data="assets/icons/add_white_48dp.svg"></object>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <!-- PRODUCTS SCREEN-->
-    <div id="products" class="container">
-        <div>PRODUCTS</div>
-    </div>
-
-    <!-- ORDERS SCREEN -->
-    <div id="orders" class="container">
-        <div>ORDERS</div>
-    </div>
-
-    <!-- ADD CLIENT SCREEN -->
-    <div id="add-client" class="container">
-        <div class="bar">NEW CLIENT</div>
-        <div class="list-panel">
-            <form class="form-center" id="client-form" onsubmit="newClient();return false;">
-
-                <input type="text" class="textbox" id="client" placeholder="Enter name..." size=20 />
-
-                <input type="tel" class="textbox" id="tel" placeholder="Enter telephone..." size=20 />
-
-                <input type="submit" id="submit-client" hidden />
-            </form>
+        <!-- PRODUCTS SCREEN-->
+        <div id="products" class="container">
+            <div>PRODUCTS</div>
         </div>
-        <div class="bar">
-            <a href="#clients">
-                <object data="assets/icons/close_white_48dp.svg"></object>
-            </a>
-            <label for="submit-client">
-                <object data="assets/icons/done_white_48dp.svg"></object>
-            </label>
+
+        <!-- ORDERS SCREEN -->
+        <div id="orders" class="container">
+            <div>ORDERS</div>
+        </div>
+
+        <!-- ADD CLIENT SCREEN -->
+        <div id="add-client" class="container">
+            <div class="bar">NEW CLIENT</div>
+            <div class="list-panel">
+                <form class="form-center" id="client-form" onsubmit="newClient();return false;">
+
+                    <input type="text" class="textbox" id="client" placeholder="Enter name..." size=20 />
+
+                    <input type="tel" class="textbox" id="tel" placeholder="Enter telephone..." size=20 inputmode="tel"/>
+
+                    <input type="submit" id="submit-client" hidden />
+                </form>
+            </div>
+            <div class="bar">
+                <a href="#clients">
+                    <object data="assets/icons/close_white_48dp.svg"></object>
+                </a>
+                <label for="submit-client">
+                    <object data="assets/icons/done_white_48dp.svg"></object>
+                </label>
+            </div>
         </div>
     </div>
     <script src="libs/sixdb.js"></script>
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/index.js"></script>
 
 </body>
 

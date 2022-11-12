@@ -1,6 +1,8 @@
-import { initClients } from './clients.js';
+import {initClients} from './clients.js';
 
-function checkStores() {
+function initDb() {
+
+    window.db = new Sixdb('maindb');
 
     db.checkStore('clients', (exists) => {
         if (!exists) {
@@ -35,36 +37,7 @@ function checkStores() {
         });
     });
 
-
-}
-
-function scrollToPage(id){
-    let target = document.getElementById(location.hash.substring(1));
-    const targetPosY = target.getBoundingClientRect().top + window.pageYOffset;
-    window.scrollTo({ pos: targetPosY });
-}
-
-function checkViewport() {
-    const height = Math.round(window.visualViewport.height + window.visualViewport.offsetTop);
-    const width = Math.round(window.visualViewport.width);
-    document.getElementById('css').innerHTML = `div.container{height:${height}px;width:${width}px}`;
-    scrollToPage(location.hash.substring(1));
-}
-
-function initHtml() {
-    checkViewport();
-    window.visualViewport.onresize = (evt) => {
-
-        checkViewport();
-
-    }
-}
-
-function initDb() {
-    initHtml();
-    window.db = new Sixdb('maindb');
-    checkStores();
     db.execTasks();
 }
 
-export { initDb, scrollToPage };
+export { initDb };

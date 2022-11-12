@@ -10,13 +10,15 @@
     padding: 0;
 }
 
-/*html {
-    scroll-behavior: smooth;
-}*/
+html {
+    overflow: hidden;
+    /*scroll-behavior: smooth;*/
+}
 
 body {
     background-color: var(--color-lighter);
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
     overflow: hidden;
 }
 
@@ -38,10 +40,16 @@ th {
     padding: 4px;
 }
 
+.wrapper {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
 .container {
     display: flex;
-    /*height: 100vh;
-    width: 100vw;*/
+    height: 100%;
+    width: 100vw;
     flex-direction: column;
     justify-content: center;
     align-items: center;

@@ -15,7 +15,6 @@ function populateClientsList() {
     clientIndex.getAll((result) => {
         clientsTable = document.getElementById('clientsTable');
         let str = '';
-        console.log(result.length);
         for (let i = 0; i < result.length; i++) {
             str += `<tr><td data-id="${result[i].id}">${result[i].name}</td><td>${result[i].tel}</td></tr>`;
         }
@@ -64,11 +63,6 @@ function initClients() {
             clientsTable.setAttribute('data-row', '');
             return;
         }
-    });
-
-    document.getElementById('client-form').addEventListener('click', () => {
-        console.log('scrolled');
-        window.scrollToPage('add-client');
     });
 }
 
