@@ -11,7 +11,7 @@ function newClient() {
     location.replace('#clients');
 }
 
-function cancelNewClient(){
+function cancelNewClient() {
     document.getElementById('client-form').reset();
 }
 
@@ -27,17 +27,18 @@ function populateClientsList() {
     db.execTasks();
 }
 
-function delClient(){
+function delClient() {
     const rowIndex = clientsTable.getAttribute('data-row');
-    if(rowIndex==''){
+    if (rowIndex == '') {
         alert('No client selected');
         return;
     }
     const tr = clientsTable.rows[rowIndex];
-    const client = tr.children[0].innerText;
+    const clientId = tr.children[0].getAttribute('data-id');
     clientsTable.setAttribute('data-row', '');
     tr.className = '';
-    clientStore.del(`name = ${client}`);
+    clientStore.del(+clientId);
+    db.execTasks();
     tr.remove();
 }
 
