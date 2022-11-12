@@ -1,3 +1,5 @@
+import { cancelNewClient } from './clients.js';
+
 function scrollToPage(id) {
     if (!location.hash) location.hash = 'menu';
     let target = document.getElementById(location.hash.substring(1));
@@ -16,6 +18,8 @@ function initHtml() {
     window.visualViewport.onresize = (evt) => {
         checkViewport();
     }
+
+    document.getElementById('cancel-new-client').addEventListener('click', cancelNewClient);
 }
 
 export { initHtml };

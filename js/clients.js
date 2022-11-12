@@ -11,6 +11,10 @@ function newClient() {
     location.replace('#clients');
 }
 
+function cancelNewClient(){
+    document.getElementById('client-form').reset();
+}
+
 function populateClientsList() {
     clientIndex.getAll((result) => {
         clientsTable = document.getElementById('clientsTable');
@@ -66,4 +70,4 @@ function initClients() {
     });
 }
 
-export { newClient, initClients, delClient };
+export { newClient, initClients, delClient, cancelNewClient };
