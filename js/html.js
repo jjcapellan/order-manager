@@ -1,4 +1,5 @@
 function scrollToPage(id) {
+    if (!location.hash) location.hash = 'menu';
     let target = document.getElementById(location.hash.substring(1));
     const targetPosY = target.getBoundingClientRect().top + window.pageYOffset;
     window.scrollTo({ pos: targetPosY });
