@@ -88,15 +88,6 @@ th {
     color: whitesmoke;
 }
 
-.bar-tools {
-    visibility: hidden;
-    z-index: 200;
-    position: fixed;
-    padding:0;
-    top: 0;
-    left: 0;
-}
-
 .form-center {
     text-align: center;
 }
