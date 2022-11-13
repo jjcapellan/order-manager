@@ -1,6 +1,4 @@
-import {initClients} from './clients.js';
-
-function initDb() {
+function initDb(initClients) {
 
     window.db = new Sixdb('maindb');
 

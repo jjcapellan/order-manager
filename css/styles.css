@@ -88,6 +88,14 @@ th {
     color: whitesmoke;
 }
 
+.bar-top {
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 .form-center {
     text-align: center;
 }

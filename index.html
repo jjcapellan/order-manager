@@ -22,20 +22,27 @@
 
         <!-- CLIENTS SCREEN -->
         <div id="clients" class="container">
-            <div class="bar">CLIENTS</div>
+            <div class="bar bar-top">
+                <h3>CLIENTS</h3>
+                <a id="bt-del-client">
+                    <object data="assets/icons/delete_white_48dp.svg"></object>
+                </a>
+            </div>
             <div class="list-panel" id="clientsList">
-                <table id="clientsTable" data-row=""></table>
+                <table id="table-clients" data-row=""></table>
             </div>
             <div class="bar">
                 <a href="#menu">
                     <object data="assets/icons/arrow_back_white_48dp.svg"></object>
                 </a>
-                <a onclick="delClient();">
-                    <object data="assets/icons/delete_white_48dp.svg"></object>
+                <a id="bt-edit-client">
+                    <object data="assets/icons/edit_white_48dp.svg"></object>
                 </a>
-                <a href="#add-client">
+
+                <a id="bt-add-client">
                     <object data="assets/icons/add_white_48dp.svg"></object>
                 </a>
+
             </div>
         </div>
 
@@ -49,21 +56,22 @@
             <div>ORDERS</div>
         </div>
 
-        <!-- ADD CLIENT SCREEN -->
-        <div id="add-client" class="container">
-            <div class="bar">NEW CLIENT</div>
+        <!-- ADD/EDIT CLIENT SCREEN -->
+        <div id="screen-form-client" data-id="" class="container">
+            <div class="bar" id="change-clients-title">NEW CLIENT</div>
             <div class="list-panel">
-                <form class="form-center" id="client-form" onsubmit="newClient();return false;">
+                <form class="form-center" id="form-client">
 
-                    <input type="text" class="textbox" id="client" placeholder="Enter name..." size=20  required/>
+                    <input type="text" class="textbox" id="client" placeholder="Enter name..." size=20 required />
 
-                    <input type="tel" class="textbox" id="tel" placeholder="Enter telephone..." size=20 inputmode="tel"/>
+                    <input type="tel" class="textbox" id="tel" placeholder="Enter telephone..." size=20
+                        inputmode="tel" />
 
                     <input type="submit" id="submit-client" hidden />
                 </form>
             </div>
             <div class="bar">
-                <a href="#clients" id="cancel-new-client">
+                <a id="bt-cancel-client">
                     <object data="assets/icons/close_white_48dp.svg"></object>
                 </a>
                 <label for="submit-client">
