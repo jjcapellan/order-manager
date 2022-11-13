@@ -34,7 +34,7 @@ function initClients() {
 function btAddClient() {
     setClientId('');
     formTitle.innerHTML = 'NEW CLIENT';
-    location.hash = '#screen-form-client';
+    location.replace('#screen-form-client');
 }
 
 function btCancelSubmitClient() {
@@ -66,7 +66,7 @@ function btEditClient() {
     setClientId(client.id);
     formTitle.innerHTML = 'EDIT CLIENT';
     populateClientForm(client);
-    location.hash = '#screen-form-client';
+    location.replace('#screen-form-client');
 }
 
 function btSubmitClient() {

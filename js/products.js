@@ -34,7 +34,7 @@ function initProducts() {
 function btAddProduct() {
     setProductId('');
     formTitle.innerHTML = 'NEW PRODUCT';
-    location.hash = '#screen-form-product';
+    location.replace('#screen-form-product');
 }
 
 function btCancelSubmitProduct() {
@@ -66,7 +66,7 @@ function btEditProduct() {
     setProductId(product.id);
     formTitle.innerHTML = 'EDIT PRODUCT';
     populateProductForm(product);
-    location.hash = '#screen-form-product';
+    location.replace('#screen-form-product');
 }
 
 function btSubmitProduct() {
