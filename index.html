@@ -46,9 +46,29 @@
             </div>
         </div>
 
-        <!-- PRODUCTS SCREEN-->
+        <!-- PRODUCTS SCREEN -->
         <div id="products" class="container">
-            <div>PRODUCTS</div>
+            <div class="bar bar-top">
+                <h3>PRODUCTS</h3>
+                <a id="bt-del-product">
+                    <object data="assets/icons/delete_white_48dp.svg"></object>
+                </a>
+            </div>
+            <div class="list-panel" id="products-list">
+                <table id="table-products" data-row=""></table>
+            </div>
+            <div class="bar">
+                <a href="#menu">
+                    <object data="assets/icons/arrow_back_white_48dp.svg"></object>
+                </a>
+                <a id="bt-edit-product">
+                    <object data="assets/icons/edit_white_48dp.svg"></object>
+                </a>
+
+                <a id="bt-add-product">
+                    <object data="assets/icons/add_white_48dp.svg"></object>
+                </a>
+            </div>
         </div>
 
         <!-- ORDERS SCREEN -->
@@ -79,6 +99,33 @@
                 </label>
             </div>
         </div>
+
+        <!-- ADD/EDIT PRODUCT SCREEN -->
+        <div id="screen-form-product" data-id="" class="container">
+            <div class="bar" id="change-products-title">NEW PRODUCT</div>
+            <div class="list-panel">
+                <form class="form-center" id="form-product">
+
+                    <input type="text" class="textbox" name="name" placeholder="Enter name..." size=20 required />
+                    <input type="number" step="0.01" class="textbox" name="price" placeholder="Enter price..." size=20 required />
+
+                    <!--<input type="file" class="textbox" name="photo" placeholder="Select image..." size=20
+                        capture="environment" accept="image/*" />-->
+
+                    <input type="submit" id="submit-product" hidden />
+                </form>
+            </div>
+            <div class="bar">
+                <a id="bt-cancel-product">
+                    <object data="assets/icons/close_white_48dp.svg"></object>
+                </a>
+                <label for="submit-product">
+                    <object data="assets/icons/done_white_48dp.svg"></object>
+                </label>
+            </div>
+        </div>
+
+        <!-- WRAPPER END-->
     </div>
     <script src="libs/sixdb.js"></script>
     <script type="module" src="js/index.js"></script>

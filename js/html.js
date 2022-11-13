@@ -7,6 +7,16 @@ import {
     tableSelectClient,
 } from './clients.js';
 
+import {
+    btAddProduct,
+    btCancelSubmitProduct,
+    btDelProduct,
+    btEditProduct,
+    btSubmitProduct,
+    tableSelectProduct,
+} from './products.js';
+
+
 //
 //
 //
@@ -20,6 +30,7 @@ function initHtml() {
     checkViewport();
     setupWindowEvents();
     setupClientEvents();
+    setupProductEvents();
 }
 
 //
@@ -51,6 +62,15 @@ function setupClientEvents() {
     document.getElementById('bt-add-client').addEventListener('click', btAddClient);
     document.getElementById('bt-edit-client').addEventListener('click', btEditClient);
     document.getElementById('table-clients').addEventListener('click', tableSelectClient);
+}
+
+function setupProductEvents() {
+    document.getElementById('form-product').addEventListener('submit', btSubmitProduct);
+    document.getElementById('bt-cancel-product').addEventListener('click', btCancelSubmitProduct);
+    document.getElementById('bt-del-product').addEventListener('click', btDelProduct);
+    document.getElementById('bt-add-product').addEventListener('click', btAddProduct);
+    document.getElementById('bt-edit-product').addEventListener('click', btEditProduct);
+    document.getElementById('table-products').addEventListener('click', tableSelectProduct);
 }
 
 function setupWindowEvents() {

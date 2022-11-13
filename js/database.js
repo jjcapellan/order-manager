@@ -1,4 +1,4 @@
-function initDb(initClients) {
+function initDb(initClients, initProducts) {
 
     window.db = new Sixdb('maindb');
 
@@ -21,6 +21,13 @@ function initDb(initClients) {
             db.newStore('products', { keyPath: 'id', autoIncrement: true });
         }
         window.productStore = db.openStore('products');
+        productStore.checkIndex('names', (exists) => {
+            if (!exists) {
+                productStore.newIndex('names', 'name');
+            }
+            window.productIndex = productStore.openIndex('names');
+            db.customTask(initProducts, window, null);
+        });
     });
 
     db.checkStore('orders', (exists) => {
