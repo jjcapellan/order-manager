@@ -106,6 +106,7 @@ function tableSelectClient(evt) {
     if (order != '') {
         setOrderClient(getSelected());
         location.replace('#screen-form-order');
+        unselectRows();
     }
     return;
 }

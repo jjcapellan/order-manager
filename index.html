@@ -97,7 +97,7 @@
         </div>
 
         <!-- ADD/EDIT CLIENT SCREEN -->
-        <div id="screen-form-client" data-id="" data-active="" class="container">
+        <div id="screen-form-client" data-id="" class="container">
             <div class="bar" id="change-clients-title">NEW CLIENT</div>
             <div class="list-panel">
                 <form class="form-center" id="form-client">
@@ -147,14 +147,20 @@
         </div>
 
         <!-- ADD/EDIT ORDER SCREEN -->
-        <div id="screen-form-order" data-id="" class="container">
+        <div id="screen-form-order" data-row="" data-active="" class="container">
             <div class="bar" id="change-orders-title">NEW ORDER</div>
-            <div class="list-panel">
+            <div class="list-panel">                
                 <div class="w100">
-                    <table id="table-details"></table>
+                    <div class="popup" id="popup-qty" hidden>
+                        <input type="number" id="tb-qty" class="textbox" placeHolder="Enter amount" size=6/>
+                        <h5>0 to remove product</h5>
+                    </div>                    
+                    <table>
+                        <tbody id="table-details"></tbody>
+                    </table>
                     <div class="w100">
                         <input type="button" id="bt-select-client" class="bt-input-200" value="Select Client" />
-                        <input type="button" class="bt-input-200" value="Add product" />
+                        <input type="button" id="bt-select-product" class="bt-input-200" value="Add product" />
                     </div>
                 </div>
             </div>

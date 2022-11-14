@@ -17,7 +17,11 @@ import {
 } from './products.js';
 
 import {
-    btSelectClient
+    btCancelOrder,
+    btSelectClient,
+    btSelectProduct,
+    btSubmitOrder,
+    tableSelectDetail,
 } from './orders.js';
 
 
@@ -78,8 +82,12 @@ function setupProductEvents() {
     document.getElementById('table-products').addEventListener('click', tableSelectProduct);
 }
 
-function setupOrderEvents(){
+function setupOrderEvents() {
     document.getElementById('bt-select-client').addEventListener('click', btSelectClient);
+    document.getElementById('bt-select-product').addEventListener('click', btSelectProduct);
+    document.getElementById('table-details').addEventListener('click', tableSelectDetail);
+    document.getElementById('bt-submit-order').addEventListener('click', btSubmitOrder);
+    document.getElementById('bt-cancel-order').addEventListener('click', btCancelOrder);
 }
 
 function setupWindowEvents() {

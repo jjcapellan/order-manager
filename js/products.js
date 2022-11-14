@@ -1,3 +1,4 @@
+import { addOrderProduct } from "./orders.js";
 //// LOCAL CONSTSTANTS ////
 ///////////////////////////
 //
@@ -8,6 +9,7 @@ const productsTable = document.getElementById('table-products');
 const form = document.getElementById('form-product');
 const formTitle = document.getElementById('change-products-title');
 const screenForm = document.getElementById('screen-form-product');
+const orderForm = document.getElementById('screen-form-order');
 
 //
 //
@@ -98,6 +100,13 @@ function tableSelectProduct(evt) {
     } else if (rowSelect == rowIndex) {
         tr.className = '';
         productsTable.setAttribute('data-row', '');
+    }
+
+    const order = orderForm.getAttribute('data-active');
+    if (order != '') {
+        addOrderProduct(getSelected());
+        location.replace('#screen-form-order');
+        unselectRows();
     }
 }
 

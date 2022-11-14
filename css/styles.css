@@ -151,6 +151,13 @@ tr {
     background-color: var(--color-lighter);
 }
 
+.popup {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding-top: 60px;
+}
+
 .w100{
     width: 100%;
 }
