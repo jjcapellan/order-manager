@@ -16,6 +16,10 @@ import {
     tableSelectProduct,
 } from './products.js';
 
+import {
+    btSelectClient
+} from './orders.js';
+
 
 //
 //
@@ -31,6 +35,7 @@ function initHtml() {
     setupWindowEvents();
     setupClientEvents();
     setupProductEvents();
+    setupOrderEvents();
 }
 
 //
@@ -71,6 +76,10 @@ function setupProductEvents() {
     document.getElementById('bt-add-product').addEventListener('click', btAddProduct);
     document.getElementById('bt-edit-product').addEventListener('click', btEditProduct);
     document.getElementById('table-products').addEventListener('click', tableSelectProduct);
+}
+
+function setupOrderEvents(){
+    document.getElementById('bt-select-client').addEventListener('click', btSelectClient);
 }
 
 function setupWindowEvents() {

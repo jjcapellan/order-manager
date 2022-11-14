@@ -73,11 +73,31 @@
 
         <!-- ORDERS SCREEN -->
         <div id="orders" class="container">
-            <div>ORDERS</div>
+            <div class="bar bar-top">
+                <h3>ORDERS</h3>
+                <a id="bt-del-order">
+                    <object data="assets/icons/delete_white_48dp.svg"></object>
+                </a>
+            </div>
+            <div class="list-panel" id="orders-list">
+                <table id="table-orders" data-row=""></table>
+            </div>
+            <div class="bar">
+                <a href="#menu">
+                    <object data="assets/icons/arrow_back_white_48dp.svg"></object>
+                </a>
+                <a id="bt-edit-order">
+                    <object data="assets/icons/edit_white_48dp.svg"></object>
+                </a>
+
+                <a href="#screen-form-order" id="bt-add-order">
+                    <object data="assets/icons/add_white_48dp.svg"></object>
+                </a>
+            </div>
         </div>
 
         <!-- ADD/EDIT CLIENT SCREEN -->
-        <div id="screen-form-client" data-id="" class="container">
+        <div id="screen-form-client" data-id="" data-active="" class="container">
             <div class="bar" id="change-clients-title">NEW CLIENT</div>
             <div class="list-panel">
                 <form class="form-center" id="form-client">
@@ -107,7 +127,8 @@
                 <form class="form-center" id="form-product">
 
                     <input type="text" class="textbox" name="name" placeholder="Enter name..." size=20 required />
-                    <input type="number" step="0.01" class="textbox" name="price" placeholder="Enter price..." size=20 required />
+                    <input type="number" step="0.01" class="textbox" name="price" placeholder="Enter price..." size=20
+                        required />
 
                     <!--<input type="file" class="textbox" name="photo" placeholder="Select image..." size=20
                         capture="environment" accept="image/*" />-->
@@ -125,6 +146,27 @@
             </div>
         </div>
 
+        <!-- ADD/EDIT ORDER SCREEN -->
+        <div id="screen-form-order" data-id="" class="container">
+            <div class="bar" id="change-orders-title">NEW ORDER</div>
+            <div class="list-panel">
+                <div class="w100">
+                    <table id="table-details"></table>
+                    <div class="w100">
+                        <input type="button" id="bt-select-client" class="bt-input-200" value="Select Client" />
+                        <input type="button" class="bt-input-200" value="Add product" />
+                    </div>
+                </div>
+            </div>
+            <div class="bar">
+                <a id="bt-cancel-order">
+                    <object data="assets/icons/close_white_48dp.svg"></object>
+                </a>
+                <a id="bt-submit-order">
+                    <object data="assets/icons/done_white_48dp.svg"></object>
+                </a>
+            </div>
+        </div>
         <!-- WRAPPER END-->
     </div>
     <script src="libs/sixdb.js"></script>

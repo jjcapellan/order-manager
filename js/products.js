@@ -91,20 +91,13 @@ function tableSelectProduct(evt) {
     if (rowSelect == '') {
         tr.className = 'tr-selected';
         productsTable.setAttribute('data-row', rowIndex);
-        return;
-    }
-
-    if (rowSelect != rowIndex) {
+    } else if (rowSelect != rowIndex) {
         productsTable.rows[rowSelect].className = '';
         tr.className = 'tr-selected';
         productsTable.setAttribute('data-row', rowIndex);
-        return;
-    }
-
-    if (rowSelect == rowIndex) {
+    } else if (rowSelect == rowIndex) {
         tr.className = '';
         productsTable.setAttribute('data-row', '');
-        return;
     }
 }
 

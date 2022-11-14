@@ -1,3 +1,4 @@
+import { setOrderClient } from './orders.js';
 //// LOCAL CONSTSTANTS ////
 ///////////////////////////
 //
@@ -8,6 +9,7 @@ const clientsTable = document.getElementById('table-clients');
 const form = document.getElementById('form-client');
 const formTitle = document.getElementById('change-clients-title');
 const screenForm = document.getElementById('screen-form-client');
+const orderForm = document.getElementById('screen-form-order');
 
 //
 //
@@ -91,21 +93,21 @@ function tableSelectClient(evt) {
     if (rowSelect == '') {
         tr.className = 'tr-selected';
         clientsTable.setAttribute('data-row', rowIndex);
-        return;
-    }
-
-    if (rowSelect != rowIndex) {
+    } else if (rowSelect != rowIndex) {
         clientsTable.rows[rowSelect].className = '';
         tr.className = 'tr-selected';
         clientsTable.setAttribute('data-row', rowIndex);
-        return;
-    }
-
-    if (rowSelect == rowIndex) {
+    } else if (rowSelect == rowIndex) {
         tr.className = '';
         clientsTable.setAttribute('data-row', '');
-        return;
     }
+
+    const order = orderForm.getAttribute('data-active');
+    if (order != '') {
+        setOrderClient(getSelected());
+        location.replace('#screen-form-order');
+    }
+    return;
 }
 
 //
