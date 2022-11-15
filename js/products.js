@@ -1,4 +1,4 @@
-import { addOrderProduct } from "./orders.js";
+import { addDetail } from "./orders.js";
 //// LOCAL CONSTSTANTS ////
 ///////////////////////////
 //
@@ -33,18 +33,18 @@ function initProducts() {
 //
 //
 
-function btAddProduct() {
+function hl_btAddProduct() {
     setProductId('');
     formTitle.innerHTML = 'NEW PRODUCT';
     location.replace('#screen-form-product');
 }
 
-function btCancelSubmitProduct() {
+function hl_btCancelProduct() {
     form.reset();
     location.replace('#products');
 }
 
-function btDelProduct() {
+function hl_btDelProduct() {
     const rowIndex = productsTable.getAttribute('data-row');
     if (rowIndex == '') {
         alert('No product selected');
@@ -59,7 +59,7 @@ function btDelProduct() {
     tr.remove();
 }
 
-function btEditProduct() {
+function hl_btEditProduct() {
     const product = getSelected();
     if (!product) {
         alert('No product selected');
@@ -71,7 +71,7 @@ function btEditProduct() {
     location.replace('#screen-form-product');
 }
 
-function btSubmitProduct() {
+function hl_btSubmitProduct() {
     const product = readForm(form);
     if (product.id == '') {
         newProduct(product);
@@ -85,7 +85,7 @@ function btSubmitProduct() {
     return false;
 }
 
-function tableSelectProduct(evt) {
+function hl_tblProducts(evt) {
     const tr = evt.target.parentElement;
     let rowIndex = tr.rowIndex;
     let rowSelect = productsTable.getAttribute('data-row');
@@ -104,7 +104,7 @@ function tableSelectProduct(evt) {
 
     const order = orderForm.getAttribute('data-active');
     if (order != '') {
-        addOrderProduct(getSelected());
+        addDetail(getSelected());
         location.replace('#screen-form-order');
         unselectRows();
     }
@@ -181,11 +181,11 @@ function updateProduct(product) {
 }
 
 export {
-    btAddProduct,
-    btCancelSubmitProduct,
-    btDelProduct,
-    btEditProduct,
-    btSubmitProduct,
+    hl_btAddProduct,
+    hl_btCancelProduct,
+    hl_btDelProduct,
+    hl_btEditProduct,
+    hl_btSubmitProduct,
     initProducts,
-    tableSelectProduct,
+    hl_tblProducts,
 };

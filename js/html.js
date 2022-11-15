@@ -1,27 +1,27 @@
 import {
-    btAddClient,
-    btCancelSubmitClient,
-    btDelClient,
-    btEditClient,
-    btSubmitClient,
-    tableSelectClient,
+    hl_btAddClient,
+    hl_btCancelClient,
+    hl_btDelClient,
+    hl_btEditClient,
+    hl_btSubmitClient,
+    hl_tblClients,
 } from './clients.js';
 
 import {
-    btAddProduct,
-    btCancelSubmitProduct,
-    btDelProduct,
-    btEditProduct,
-    btSubmitProduct,
-    tableSelectProduct,
+    hl_btAddProduct,
+    hl_btCancelProduct,
+    hl_btDelProduct,
+    hl_btEditProduct,
+    hl_btSubmitProduct,
+    hl_tblProducts,
 } from './products.js';
 
 import {
-    btCancelOrder,
-    btSelectClient,
-    btSelectProduct,
-    btSubmitOrder,
-    tableSelectDetail,
+    hl_btCancelOrder,
+    hl_btSelectClient,
+    hl_btSelectProduct,
+    hl_btSubmitOrder,
+    hl_tblSelectDetail,
 } from './orders.js';
 
 
@@ -65,29 +65,29 @@ function scrollToPage(id) {
 }
 
 function setupClientEvents() {
-    document.getElementById('form-client').addEventListener('submit', btSubmitClient);
-    document.getElementById('bt-cancel-client').addEventListener('click', btCancelSubmitClient);
-    document.getElementById('bt-del-client').addEventListener('click', btDelClient);
-    document.getElementById('bt-add-client').addEventListener('click', btAddClient);
-    document.getElementById('bt-edit-client').addEventListener('click', btEditClient);
-    document.getElementById('table-clients').addEventListener('click', tableSelectClient);
-}
-
-function setupProductEvents() {
-    document.getElementById('form-product').addEventListener('submit', btSubmitProduct);
-    document.getElementById('bt-cancel-product').addEventListener('click', btCancelSubmitProduct);
-    document.getElementById('bt-del-product').addEventListener('click', btDelProduct);
-    document.getElementById('bt-add-product').addEventListener('click', btAddProduct);
-    document.getElementById('bt-edit-product').addEventListener('click', btEditProduct);
-    document.getElementById('table-products').addEventListener('click', tableSelectProduct);
+    document.getElementById('bt-add-client').addEventListener('click', hl_btAddClient);
+    document.getElementById('bt-cancel-client').addEventListener('click', hl_btCancelClient);
+    document.getElementById('bt-del-client').addEventListener('click', hl_btDelClient);
+    document.getElementById('bt-edit-client').addEventListener('click', hl_btEditClient);
+    document.getElementById('form-client').addEventListener('submit', hl_btSubmitClient);
+    document.getElementById('table-clients').addEventListener('click', hl_tblClients);
 }
 
 function setupOrderEvents() {
-    document.getElementById('bt-select-client').addEventListener('click', btSelectClient);
-    document.getElementById('bt-select-product').addEventListener('click', btSelectProduct);
-    document.getElementById('table-details').addEventListener('click', tableSelectDetail);
-    document.getElementById('bt-submit-order').addEventListener('click', btSubmitOrder);
-    document.getElementById('bt-cancel-order').addEventListener('click', btCancelOrder);
+    document.getElementById('bt-cancel-order').addEventListener('click', hl_btCancelOrder);
+    document.getElementById('bt-select-client').addEventListener('click', hl_btSelectClient);
+    document.getElementById('bt-select-product').addEventListener('click', hl_btSelectProduct);
+    document.getElementById('bt-submit-order').addEventListener('click', hl_btSubmitOrder);
+    document.getElementById('table-details').addEventListener('click', hl_tblSelectDetail);
+}
+
+function setupProductEvents() {
+    document.getElementById('bt-add-product').addEventListener('click', hl_btAddProduct);
+    document.getElementById('bt-cancel-product').addEventListener('click', hl_btCancelProduct);
+    document.getElementById('bt-del-product').addEventListener('click', hl_btDelProduct);
+    document.getElementById('bt-edit-product').addEventListener('click', hl_btEditProduct);
+    document.getElementById('form-product').addEventListener('submit', hl_btSubmitProduct);
+    document.getElementById('table-products').addEventListener('click', hl_tblProducts);
 }
 
 function setupWindowEvents() {

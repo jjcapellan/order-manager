@@ -4,15 +4,15 @@
 //
 //
 
-const ordersTable = document.getElementById('table-orders');
+const btSelectClient = document.getElementById('bt-select-client');
+const btSelectProduct = document.getElementById('bt-select-product');
 const form = document.getElementById('form-order');
 const formTitle = document.getElementById('change-order-title');
-const screenForm = document.getElementById('screen-form-order');
-const detailsTable = document.getElementById('table-details');
-const btClient = document.getElementById('bt-select-client');
-const btProduct = document.getElementById('bt-select-product');
-const tbQty = document.getElementById('tb-qty');
+const ordersTable = document.getElementById('table-orders');
 const popupQty = document.getElementById('popup-qty');
+const screenForm = document.getElementById('screen-form-order');
+const tblDetails = document.getElementById('table-details');
+const tbQty = document.getElementById('tb-qty');
 
 //
 //
@@ -23,35 +23,35 @@ const popupQty = document.getElementById('popup-qty');
 //
 //
 
-function btAddOrder() {
+function hl_btAddOrder() {
     setOrderId('');
     formTitle.innerHTML = 'NEW ORDER';
     location.replace('#screen-form-order');
 }
 
-function btSelectClient() {
-    screenForm.setAttribute('data-active', 'true');
-    location.replace('#clients');
-}
-
-function btSelectProduct() {
-    location.replace('#products');
-}
-
-function btCancelOrder() {
+function hl_btCancelOrder() {
     location.replace('#orders');
     resetOrder();
 }
 
-function resetOrder() {
-    screenForm.setAttribute('data-active', '');
-    screenForm.setAttribute('data-row', '');
-    detailsTable.innerHTML = '';
-    btClient.style.display = 'block';
-    btProduct.style.display = 'block';
+function hl_btSelectClient() {
+    screenForm.setAttribute('data-active', 'true');
+    location.replace('#clients');
 }
 
-function tableSelectDetail(evt) {
+function hl_btSelectProduct() {
+    location.replace('#products');
+}
+
+function hl_btSubmitOrder() {
+    const rowIndex = screenForm.getAttribute('data-row');
+    if (rowIndex) {
+        changeDetail(rowIndex);
+        return;
+    }
+}
+
+function hl_tblSelectDetail(evt) {
     const row = evt.target.parentElement;
     const rowIndex = row.rowIndex;
     if (rowIndex == 0) {
@@ -63,41 +63,30 @@ function tableSelectDetail(evt) {
     }
     screenForm.setAttribute('data-row', rowIndex);
     popupQty.removeAttribute('hidden');
-    detailsTable.setAttribute('hidden', '');
-    btProduct.style.display = 'none';
+    tblDetails.setAttribute('hidden', '');
+    btSelectProduct.style.display = 'none';
 }
 
-function addOrderProduct(product) {
+//
+//
+//
+//// PUBLIC FUNCTIONS ////
+///////////////////////////
+//
+//
+//
+
+function addDetail(product) {
     let tr = document.createElement('tr');
     let str = `<td>${product.name}</td><td>0</td>`;
     tr.innerHTML = str;
-    detailsTable.appendChild(tr);
-}
-
-function btSubmitOrder() {
-    const rowIndex = screenForm.getAttribute('data-row');
-    if (rowIndex) {
-        changeDetail(rowIndex);
-        return;
-    }
-}
-
-function changeDetail(rowIndex) {
-    const amount = tbQty.value;
-    const row = detailsTable.rows[rowIndex];
-    row.children[1].innerText = amount;
-
-    tbQty.value = '';
-    popupQty.setAttribute('hidden', '');
-    detailsTable.removeAttribute('hidden');
-    btProduct.style.display = 'block';
-    screenForm.setAttribute('data-row', '');
+    tblDetails.appendChild(tr);
 }
 
 function setOrderClient(client) {
-    btClient.style.display = 'none';
+    btSelectClient.style.display = 'none';
     let str = `<tr><th colspan="2">${client.name}</th></tr>`;
-    detailsTable.innerHTML = str;
+    tblDetails.innerHTML = str;
 }
 
 //
@@ -109,17 +98,37 @@ function setOrderClient(client) {
 //
 //
 
+function changeDetail(rowIndex) {
+    const amount = tbQty.value;
+    const row = tblDetails.rows[rowIndex];
+    row.children[1].innerText = amount;
+
+    tbQty.value = '';
+    popupQty.setAttribute('hidden', '');
+    tblDetails.removeAttribute('hidden');
+    btSelectProduct.style.display = 'block';
+    screenForm.setAttribute('data-row', '');
+}
+
+function resetOrder() {
+    screenForm.setAttribute('data-active', '');
+    screenForm.setAttribute('data-row', '');
+    tblDetails.innerHTML = '';
+    btSelectClient.style.display = 'block';
+    btSelectProduct.style.display = 'block';
+}
+
 function setOrderId(id) {
     screenForm.setAttribute('data-id', id);
 }
 
 export {
-    addOrderProduct,
-    btAddOrder,
-    btSelectClient,
-    btSelectProduct,
-    btCancelOrder,
+    addDetail,
+    hl_btAddOrder,
+    hl_btCancelOrder,
+    hl_btSelectClient,
+    hl_btSelectProduct,
+    hl_btSubmitOrder,
+    hl_tblSelectDetail,
     setOrderClient,
-    tableSelectDetail,
-    btSubmitOrder,
 }

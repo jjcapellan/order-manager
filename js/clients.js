@@ -8,8 +8,8 @@ import { setOrderClient } from './orders.js';
 const clientsTable = document.getElementById('table-clients');
 const form = document.getElementById('form-client');
 const formTitle = document.getElementById('change-clients-title');
-const screenForm = document.getElementById('screen-form-client');
 const orderForm = document.getElementById('screen-form-order');
+const screenForm = document.getElementById('screen-form-client');
 
 //
 //
@@ -33,18 +33,18 @@ function initClients() {
 //
 //
 
-function btAddClient() {
+function hl_btAddClient() {
     setClientId('');
     formTitle.innerHTML = 'NEW CLIENT';
     location.replace('#screen-form-client');
 }
 
-function btCancelSubmitClient() {
+function hl_btCancelClient() {
     form.reset();
     location.replace('#clients');
 }
 
-function btDelClient() {
+function hl_btDelClient() {
     const rowIndex = clientsTable.getAttribute('data-row');
     if (rowIndex == '') {
         alert('No client selected');
@@ -59,7 +59,7 @@ function btDelClient() {
     tr.remove();
 }
 
-function btEditClient() {
+function hl_btEditClient() {
     const client = getSelected();
     if (!client) {
         alert('No client selected');
@@ -71,7 +71,7 @@ function btEditClient() {
     location.replace('#screen-form-client');
 }
 
-function btSubmitClient() {
+function hl_btSubmitClient() {
     const client = readForm(form);
     if (client.id == '') {
         newClient(client);
@@ -85,7 +85,7 @@ function btSubmitClient() {
     return false;
 }
 
-function tableSelectClient(evt) {
+function hl_tblClients(evt) {
     const tr = evt.target.parentElement;
     let rowIndex = tr.rowIndex;
     let rowSelect = clientsTable.getAttribute('data-row');
@@ -183,11 +183,11 @@ function updateClient(client) {
 
 
 export {
-    btAddClient,
-    btCancelSubmitClient,
-    btDelClient,
-    btEditClient,
-    btSubmitClient,
+    hl_btAddClient,
+    hl_btCancelClient,
+    hl_btDelClient,
+    hl_btEditClient,
+    hl_btSubmitClient,
     initClients,
-    tableSelectClient,
+    hl_tblClients,
 };
