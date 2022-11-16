@@ -20,6 +20,10 @@ const order = {
     details: [],
 }
 
+function initOrders() {
+    populateOrderList();
+}
+
 //
 //
 //
@@ -55,7 +59,18 @@ function hl_btSubmitOrder() {
         changeDetail(rowIndex);
         return;
     }
-    console.log(order);
+    orderStore.add(
+        order,
+        {
+            successCallback:
+                () => {
+                    populateOrderList();
+                    resetOrder();
+                    location.replace('#orders')
+                }
+        });
+    db.execTasks();
+
 }
 
 function hl_tblSelectDetail(evt) {
@@ -85,7 +100,7 @@ function hl_tblSelectDetail(evt) {
 
 function addDetail(product) {
     let tr = document.createElement('tr');
-    order.details.push({id: product.id, name: product.name, qty: '0'});
+    order.details.push({ productId: product.id, name: product.name, qty: '0' });
     let str = `<td>${product.name}</td><td>0</td>`;
     tr.innerHTML = str;
     tblDetails.appendChild(tr);
@@ -120,6 +135,17 @@ function changeDetail(rowIndex) {
     screenForm.setAttribute('data-row', '');
 }
 
+function populateOrderList() {
+    orderIndex.getAll((result) => {
+        let str = '';
+        for (let i = 0; i < result.length; i++) {
+            str += `<tr><td data-id="${result[i].id}">${result[i].date}</td><td>${result[i].client.name}</td></tr>`;
+        }
+        ordersTable.innerHTML = str;
+    });
+    db.execTasks();
+}
+
 function resetOrder() {
     order.date = null;
     order.client = null;
@@ -146,5 +172,6 @@ export {
     hl_btSelectProduct,
     hl_btSubmitOrder,
     hl_tblSelectDetail,
+    initOrders,
     setOrderClient,
 }

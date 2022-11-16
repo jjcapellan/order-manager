@@ -1,4 +1,4 @@
-function initDb(initClients, initProducts) {
+function initDb(initClients, initProducts, initOrders) {
 
     window.db = new Sixdb('maindb');
 
@@ -39,6 +39,8 @@ function initDb(initClients, initProducts) {
             if (!exists) {
                 orderStore.newIndex('dates', 'date');
             }
+            window.orderIndex = orderStore.openIndex('dates');
+            db.customTask(initOrders, window, null);
         });
     });
 
