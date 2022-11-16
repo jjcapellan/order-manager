@@ -17,6 +17,7 @@ import {
 } from './products.js';
 
 import {
+    hl_btAddOrder,
     hl_btCancelOrder,
     hl_btSelectClient,
     hl_btSelectProduct,
@@ -74,6 +75,7 @@ function setupClientEvents() {
 }
 
 function setupOrderEvents() {
+    document.getElementById('bt-add-order').addEventListener('click', hl_btAddOrder);
     document.getElementById('bt-cancel-order').addEventListener('click', hl_btCancelOrder);
     document.getElementById('bt-select-client').addEventListener('click', hl_btSelectClient);
     document.getElementById('bt-select-product').addEventListener('click', hl_btSelectProduct);

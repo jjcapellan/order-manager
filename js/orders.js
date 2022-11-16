@@ -7,12 +7,18 @@
 const btSelectClient = document.getElementById('bt-select-client');
 const btSelectProduct = document.getElementById('bt-select-product');
 const form = document.getElementById('form-order');
-const formTitle = document.getElementById('change-order-title');
+const formTitle = document.getElementById('change-orders-title');
 const ordersTable = document.getElementById('table-orders');
 const popupQty = document.getElementById('popup-qty');
 const screenForm = document.getElementById('screen-form-order');
 const tblDetails = document.getElementById('table-details');
 const tbQty = document.getElementById('tb-qty');
+
+const order = {
+    date: null,
+    client: null,
+    details: [],
+}
 
 //
 //
@@ -24,7 +30,7 @@ const tbQty = document.getElementById('tb-qty');
 //
 
 function hl_btAddOrder() {
-    setOrderId('');
+    setDate();
     formTitle.innerHTML = 'NEW ORDER';
     location.replace('#screen-form-order');
 }
@@ -49,6 +55,7 @@ function hl_btSubmitOrder() {
         changeDetail(rowIndex);
         return;
     }
+    console.log(order);
 }
 
 function hl_tblSelectDetail(evt) {
@@ -78,6 +85,7 @@ function hl_tblSelectDetail(evt) {
 
 function addDetail(product) {
     let tr = document.createElement('tr');
+    order.details.push({id: product.id, name: product.name, qty: '0'});
     let str = `<td>${product.name}</td><td>0</td>`;
     tr.innerHTML = str;
     tblDetails.appendChild(tr);
@@ -85,6 +93,7 @@ function addDetail(product) {
 
 function setOrderClient(client) {
     btSelectClient.style.display = 'none';
+    order.client = { id: client.id, name: client.name };
     let str = `<tr><th colspan="2">${client.name}</th></tr>`;
     tblDetails.innerHTML = str;
 }
@@ -101,6 +110,7 @@ function setOrderClient(client) {
 function changeDetail(rowIndex) {
     const amount = tbQty.value;
     const row = tblDetails.rows[rowIndex];
+    order.details[rowIndex - 1].qty = amount;
     row.children[1].innerText = amount;
 
     tbQty.value = '';
@@ -111,15 +121,21 @@ function changeDetail(rowIndex) {
 }
 
 function resetOrder() {
+    order.date = null;
+    order.client = null;
+    order.details = [];
+
     screenForm.setAttribute('data-active', '');
     screenForm.setAttribute('data-row', '');
+
     tblDetails.innerHTML = '';
     btSelectClient.style.display = 'block';
     btSelectProduct.style.display = 'block';
 }
 
-function setOrderId(id) {
-    screenForm.setAttribute('data-id', id);
+function setDate() {
+    let d = new Date();
+    order.date = d.toISOString().substring(0, 10); // yyyy-mm-dd
 }
 
 export {
