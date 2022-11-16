@@ -22,6 +22,7 @@ import {
     hl_btSelectClient,
     hl_btSelectProduct,
     hl_btSubmitOrder,
+    hl_tblOrders,
     hl_tblSelectDetail,
 } from './orders.js';
 
@@ -81,6 +82,7 @@ function setupOrderEvents() {
     document.getElementById('bt-select-product').addEventListener('click', hl_btSelectProduct);
     document.getElementById('bt-submit-order').addEventListener('click', hl_btSubmitOrder);
     document.getElementById('table-details').addEventListener('click', hl_tblSelectDetail);
+    document.getElementById('table-orders').addEventListener('click', hl_tblOrders);
 }
 
 function setupProductEvents() {

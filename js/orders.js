@@ -73,6 +73,26 @@ function hl_btSubmitOrder() {
 
 }
 
+function hl_tblOrders(evt) {
+    const tr = evt.target.parentElement;
+    let rowIndex = tr.rowIndex;
+    let rowSelect = ordersTable.getAttribute('data-row');
+
+    if (rowSelect == '') {
+        tr.className = 'tr-selected';
+        ordersTable.setAttribute('data-row', rowIndex);
+    } else if (rowSelect != rowIndex) {
+        ordersTable.rows[rowSelect].className = '';
+        tr.className = 'tr-selected';
+        ordersTable.setAttribute('data-row', rowIndex);
+    } else if (rowSelect == rowIndex) {
+        tr.className = '';
+        ordersTable.setAttribute('data-row', '');
+    }
+
+    return;
+}
+
 function hl_tblSelectDetail(evt) {
     const row = evt.target.parentElement;
     const rowIndex = row.rowIndex;
@@ -171,6 +191,7 @@ export {
     hl_btSelectClient,
     hl_btSelectProduct,
     hl_btSubmitOrder,
+    hl_tblOrders,
     hl_tblSelectDetail,
     initOrders,
     setOrderClient,
