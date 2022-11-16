@@ -44,6 +44,21 @@ function hl_btCancelOrder() {
     resetOrder();
 }
 
+function hl_btDelOrder() {
+    const rowIndex = ordersTable.getAttribute('data-row');
+    if (rowIndex == '') {
+        alert('No client selected');
+        return;
+    }
+    const tr = ordersTable.rows[rowIndex];
+    const orderId = tr.children[0].getAttribute('data-id');
+    ordersTable.setAttribute('data-row', '');
+    tr.className = '';
+    orderStore.del(+orderId);
+    db.execTasks();
+    tr.remove();
+}
+
 function hl_btSelectClient() {
     screenForm.setAttribute('data-active', 'true');
     location.replace('#clients');
@@ -188,6 +203,7 @@ export {
     addDetail,
     hl_btAddOrder,
     hl_btCancelOrder,
+    hl_btDelOrder,
     hl_btSelectClient,
     hl_btSelectProduct,
     hl_btSubmitOrder,
