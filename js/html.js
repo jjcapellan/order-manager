@@ -43,6 +43,7 @@ function initHtml() {
     checkViewport();
     setupWindowEvents();
     setupClientEvents();
+    setupMenuEvents();
     setupProductEvents();
     setupOrderEvents();
 }
@@ -59,23 +60,23 @@ function initHtml() {
 function checkViewport() {
     const height = Math.round(window.visualViewport.height + window.visualViewport.offsetTop);
     document.getElementById('css').innerHTML = `div.wrapper{height:${height}px;}`;
-    scrollToPage(location.hash.substring(1));
-}
-
-function scrollToPage(id) {
-    if (!location.hash) location.hash = 'menu';
-    let target = document.getElementById(location.hash.substring(1));
-    const targetPosY = target.getBoundingClientRect().top + window.pageYOffset;
-    window.scrollTo({ pos: targetPosY });
+    scrollToAnchor(location.hash.substring(1));
 }
 
 function setupClientEvents() {
     document.getElementById('bt-add-client').addEventListener('click', hl_btAddClient);
     document.getElementById('bt-cancel-client').addEventListener('click', hl_btCancelClient);
+    document.getElementById('bt-clients-back').addEventListener('click', () => { scrollToAnchor('menu'); });
     document.getElementById('bt-del-client').addEventListener('click', hl_btDelClient);
     document.getElementById('bt-edit-client').addEventListener('click', hl_btEditClient);
     document.getElementById('form-client').addEventListener('submit', hl_btSubmitClient);
     document.getElementById('table-clients').addEventListener('click', hl_tblClients);
+}
+
+function setupMenuEvents() {
+    document.getElementById('bt-clients').addEventListener('click', () => { window.scrollToAnchor('clients'); });
+    document.getElementById('bt-products').addEventListener('click', () => { window.scrollToAnchor('products'); });
+    document.getElementById('bt-orders').addEventListener('click', () => { window.scrollToAnchor('orders'); });
 }
 
 function setupOrderEvents() {
@@ -83,6 +84,7 @@ function setupOrderEvents() {
     document.getElementById('bt-cancel-order').addEventListener('click', hl_btCancelOrder);
     document.getElementById('bt-del-order').addEventListener('click', hl_btDelOrder);
     document.getElementById('bt-edit-order').addEventListener('click', hl_btEditOrder);
+    document.getElementById('bt-orders-back').addEventListener('click', () => { scrollToAnchor('menu'); });
     document.getElementById('bt-select-client').addEventListener('click', hl_btSelectClient);
     document.getElementById('bt-select-product').addEventListener('click', hl_btSelectProduct);
     document.getElementById('bt-submit-order').addEventListener('click', hl_btSubmitOrder);
@@ -96,6 +98,7 @@ function setupProductEvents() {
     document.getElementById('bt-cancel-product').addEventListener('click', hl_btCancelProduct);
     document.getElementById('bt-del-product').addEventListener('click', hl_btDelProduct);
     document.getElementById('bt-edit-product').addEventListener('click', hl_btEditProduct);
+    document.getElementById('bt-products-back').addEventListener('click', () => { scrollToAnchor('menu'); });
     document.getElementById('form-product').addEventListener('submit', hl_btSubmitProduct);
     document.getElementById('table-products').addEventListener('click', hl_tblProducts);
 }

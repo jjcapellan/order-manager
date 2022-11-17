@@ -15,9 +15,9 @@
 
         <!-- MENU SCREEN -->
         <div id="menu" class="container">
-            <a href="#clients" class="bt-link">CLIENTS</a>
-            <a href="#products" class="bt-link">PRODUCTS</a>
-            <a href="#orders" class="bt-link">ORDERS</a>
+            <a id="bt-clients" class="bt-link">CLIENTS</a>
+            <a id="bt-products" class="bt-link">PRODUCTS</a>
+            <a id="bt-orders" class="bt-link">ORDERS</a>
         </div>
 
         <!-- CLIENTS SCREEN -->
@@ -32,7 +32,7 @@
                 <table id="table-clients" data-row=""></table>
             </div>
             <div class="bar">
-                <a href="#menu">
+                <a id="bt-clients-back">
                     <object data="assets/icons/arrow_back_white_48dp.svg"></object>
                 </a>
                 <a id="bt-edit-client">
@@ -58,7 +58,7 @@
                 <table id="table-products" data-row=""></table>
             </div>
             <div class="bar">
-                <a href="#menu">
+                <a id="bt-products-back">
                     <object data="assets/icons/arrow_back_white_48dp.svg"></object>
                 </a>
                 <a id="bt-edit-product">
@@ -86,7 +86,7 @@
                 <table id="table-orders" data-row=""></table>
             </div>
             <div class="bar">
-                <a href="#menu">
+                <a id="bt-orders-back">
                     <object data="assets/icons/arrow_back_white_48dp.svg"></object>
                 </a>
                 <a id="bt-edit-order">
@@ -152,12 +152,12 @@
         <!-- ADD/EDIT ORDER SCREEN -->
         <div id="screen-form-order" data-row="" data-active="" class="container">
             <div class="bar" id="change-orders-title">NEW ORDER</div>
-            <div class="list-panel">                
+            <div class="list-panel">
                 <div class="w100">
                     <div class="popup" id="popup-qty" hidden>
-                        <input type="number" id="tb-qty" class="textbox" placeHolder="Enter amount" size=6/>
+                        <input type="number" id="tb-qty" class="textbox" placeHolder="Enter amount" size=6 />
                         <h5>0 to remove product</h5>
-                    </div>                    
+                    </div>
                     <table>
                         <tbody id="table-details"></tbody>
                     </table>
