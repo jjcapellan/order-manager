@@ -20,6 +20,7 @@ import {
     hl_btAddOrder,
     hl_btCancelOrder,
     hl_btDelOrder,
+    hl_btEditOrder,
     hl_btSelectClient,
     hl_btSelectProduct,
     hl_btSubmitOrder,
@@ -80,6 +81,7 @@ function setupOrderEvents() {
     document.getElementById('bt-add-order').addEventListener('click', hl_btAddOrder);
     document.getElementById('bt-cancel-order').addEventListener('click', hl_btCancelOrder);
     document.getElementById('bt-del-order').addEventListener('click', hl_btDelOrder);
+    document.getElementById('bt-edit-order').addEventListener('click', hl_btEditOrder);
     document.getElementById('bt-select-client').addEventListener('click', hl_btSelectClient);
     document.getElementById('bt-select-product').addEventListener('click', hl_btSelectProduct);
     document.getElementById('bt-submit-order').addEventListener('click', hl_btSubmitOrder);

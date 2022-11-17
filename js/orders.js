@@ -20,6 +20,8 @@ const order = {
     details: [],
 }
 
+let orderId = null;
+
 function initOrders() {
     populateOrderList();
 }
@@ -35,8 +37,9 @@ function initOrders() {
 
 function hl_btAddOrder() {
     setDate();
-    formTitle.innerHTML = 'NEW ORDER';
+    formTitle.innerHTML = 'NEW ORDER';    
     location.replace('#screen-form-order');
+    unselectRows();
 }
 
 function hl_btCancelOrder() {
@@ -47,7 +50,7 @@ function hl_btCancelOrder() {
 function hl_btDelOrder() {
     const rowIndex = ordersTable.getAttribute('data-row');
     if (rowIndex == '') {
-        alert('No client selected');
+        alert('No order selected');
         return;
     }
     const tr = ordersTable.rows[rowIndex];
@@ -57,6 +60,25 @@ function hl_btDelOrder() {
     orderStore.del(+orderId);
     db.execTasks();
     tr.remove();
+}
+
+function hl_btEditOrder() {
+    let rowIndex = ordersTable.getAttribute('data-row');
+    if (rowIndex = '') {
+        alert('No order selected');
+        return;
+    }
+    let _orderId = ordersTable.rows[+rowIndex].children[0].getAttribute('data-id');
+    orderId = _orderId;
+    orderStore.get(+_orderId,
+        (_order) => {
+            populateOrderForm(_order[0]);
+            screenForm.setAttribute('data-active', 'true');
+            formTitle.innerHTML = 'EDIT ORDER';
+            location.replace('#screen-form-order');
+        });
+    db.execTasks();
+    unselectRows();
 }
 
 function hl_btSelectClient() {
@@ -74,18 +96,33 @@ function hl_btSubmitOrder() {
         changeDetail(rowIndex);
         return;
     }
-    orderStore.add(
-        order,
-        {
-            successCallback:
-                () => {
-                    populateOrderList();
-                    resetOrder();
-                    location.replace('#orders')
-                }
-        });
-    db.execTasks();
 
+    if (formTitle.innerHTML == 'NEW ORDER') {
+        orderStore.add(
+            order,
+            {
+                successCallback:
+                    () => {
+                        populateOrderList();
+                        resetOrder();
+                        location.replace('#orders')
+                    }
+            });
+
+    } else if (formTitle.innerHTML == 'EDIT ORDER') {
+        orderStore.update(
+            +orderId,
+            order,
+            {
+                successCallback:
+                    () => {
+                        resetOrder();
+                        location.replace('#orders');
+                    }
+            }
+        )
+    }
+    db.execTasks();
 }
 
 function hl_tblOrders(evt) {
@@ -170,6 +207,24 @@ function changeDetail(rowIndex) {
     screenForm.setAttribute('data-row', '');
 }
 
+function populateOrderForm(_order) {
+    btSelectClient.style.display = 'none';
+
+    order.date = _order.date;
+    setOrderClient(_order.client);
+    order.details = _order.details;
+
+    for (let i = 0; i < _order.details.length; i++) {
+        let tr = document.createElement('tr');
+        let str = `<td>${_order.details[i].name}</td><td>${_order.details[i].qty}</td>`;
+        tr.innerHTML = str;
+        tblDetails.appendChild(tr);
+    }
+
+    screenForm.setAttribute('data-active', 'true');
+
+}
+
 function populateOrderList() {
     orderIndex.getAll((result) => {
         let str = '';
@@ -185,6 +240,7 @@ function resetOrder() {
     order.date = null;
     order.client = null;
     order.details = [];
+    orderId = null;
 
     screenForm.setAttribute('data-active', '');
     screenForm.setAttribute('data-row', '');
@@ -199,11 +255,22 @@ function setDate() {
     order.date = d.toISOString().substring(0, 10); // yyyy-mm-dd
 }
 
+function unselectRows() {
+    const rowIndex = ordersTable.getAttribute('data-row');
+    if (rowIndex == '') {
+        return;
+    }
+    const tr = ordersTable.rows[rowIndex];
+    tr.className = '';
+    ordersTable.setAttribute('data-row', '');
+}
+
 export {
     addDetail,
     hl_btAddOrder,
     hl_btCancelOrder,
     hl_btDelOrder,
+    hl_btEditOrder,
     hl_btSelectClient,
     hl_btSelectProduct,
     hl_btSubmitOrder,
