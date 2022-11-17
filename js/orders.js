@@ -11,6 +11,7 @@ const formTitle = document.getElementById('change-orders-title');
 const ordersTable = document.getElementById('table-orders');
 const popupQty = document.getElementById('popup-qty');
 const screenForm = document.getElementById('screen-form-order');
+const btSubmitOrder = document.getElementById('bt-submit-order');
 const tblDetails = document.getElementById('table-details');
 const tbQty = document.getElementById('tb-qty');
 
@@ -37,7 +38,7 @@ function initOrders() {
 
 function hl_btAddOrder() {
     setDate();
-    formTitle.innerHTML = 'NEW ORDER';    
+    formTitle.innerHTML = 'NEW ORDER';
     location.replace('#screen-form-order');
     unselectRows();
 }
@@ -64,7 +65,7 @@ function hl_btDelOrder() {
 
 function hl_btEditOrder() {
     let rowIndex = ordersTable.getAttribute('data-row');
-    if (rowIndex = '') {
+    if (rowIndex == '') {
         alert('No order selected');
         return;
     }
@@ -125,6 +126,29 @@ function hl_btSubmitOrder() {
     db.execTasks();
 }
 
+function hl_btViewOrder() {
+    let rowIndex = ordersTable.getAttribute('data-row');
+    if (rowIndex == '') {
+        alert('No order selected');
+        return;
+    }
+    let _orderId = ordersTable.rows[+rowIndex].children[0].getAttribute('data-id');
+    console.log(ordersTable.rows[+rowIndex].children[0]);
+    orderStore.get(
+        +_orderId,
+        (_order) => {
+            populateOrderForm(_order[0]);
+            btSelectProduct.style.display = 'none';
+            btSubmitOrder.style.display = 'none';
+            tblDetails.style.pointerEvents = 'none';
+            formTitle.innerHTML = 'VIEW ORDER';
+            unselectRows();
+            location.replace('#screen-form-order');
+        }
+    );
+    db.execTasks();
+}
+
 function hl_tblOrders(evt) {
     const tr = evt.target.parentElement;
     let rowIndex = tr.rowIndex;
@@ -141,7 +165,6 @@ function hl_tblOrders(evt) {
         tr.className = '';
         ordersTable.setAttribute('data-row', '');
     }
-
     return;
 }
 
@@ -248,6 +271,8 @@ function resetOrder() {
     tblDetails.innerHTML = '';
     btSelectClient.style.display = 'block';
     btSelectProduct.style.display = 'block';
+    btSubmitOrder.style.display = 'initial';
+    tblDetails.style.pointerEvents = 'auto';
 }
 
 function setDate() {
@@ -274,6 +299,7 @@ export {
     hl_btSelectClient,
     hl_btSelectProduct,
     hl_btSubmitOrder,
+    hl_btViewOrder,
     hl_tblOrders,
     hl_tblSelectDetail,
     initOrders,
