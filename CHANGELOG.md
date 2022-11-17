@@ -1,3 +1,9 @@
+# WIP
+## Fixes
+* **Poluted navigation history**: navigation using links has been replaced by function *scrollToAnchor*
+
+---
+
 # v0.1.0-alpha.3
 ## New features
 * **Add order**
