@@ -1,4 +1,6 @@
-# WIP
+# v0.1.0-alpha.4
+## New features
+* **Product image**
 ## Fixes
 * **Poluted navigation history**: navigation using links has been replaced by function *scrollToAnchor*
 
