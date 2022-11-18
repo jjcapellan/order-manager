@@ -57,6 +57,7 @@ function hl_btCancelProduct() {
 
 function hl_btCancelProductView() {
     imgProduct.setAttribute('src', '');
+    unselectRows();
     location.replace('#products');
 }
 
