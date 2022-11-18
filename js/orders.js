@@ -39,12 +39,12 @@ function initOrders() {
 function hl_btAddOrder() {
     setDate();
     formTitle.innerHTML = 'NEW ORDER';
-    location.replace('#screen-form-order');
+    scrollToAnchor('screen-form-order');
     unselectRows();
 }
 
 function hl_btCancelOrder() {
-    location.replace('#orders');
+    scrollToAnchor('orders');
     resetOrder();
 }
 
@@ -76,7 +76,7 @@ function hl_btEditOrder() {
             populateOrderForm(_order[0]);
             screenForm.setAttribute('data-active', 'true');
             formTitle.innerHTML = 'EDIT ORDER';
-            location.replace('#screen-form-order');
+            scrollToAnchor('screen-form-order');
         });
     db.execTasks();
     unselectRows();
@@ -84,11 +84,11 @@ function hl_btEditOrder() {
 
 function hl_btSelectClient() {
     screenForm.setAttribute('data-active', 'true');
-    location.replace('#clients');
+    scrollToAnchor('clients');
 }
 
 function hl_btSelectProduct() {
-    location.replace('#products');
+    scrollToAnchor('products');
 }
 
 function hl_btSubmitOrder() {
@@ -106,7 +106,7 @@ function hl_btSubmitOrder() {
                     () => {
                         populateOrderList();
                         resetOrder();
-                        location.replace('#orders')
+                        scrollToAnchor('orders')
                     }
             });
 
@@ -118,7 +118,7 @@ function hl_btSubmitOrder() {
                 successCallback:
                     () => {
                         resetOrder();
-                        location.replace('#orders');
+                        scrollToAnchor('orders');
                     }
             }
         )
@@ -143,7 +143,7 @@ function hl_btViewOrder() {
             tblDetails.style.pointerEvents = 'none';
             formTitle.innerHTML = 'VIEW ORDER';
             unselectRows();
-            location.replace('#screen-form-order');
+            scrollToAnchor('screen-form-order');
         }
     );
     db.execTasks();

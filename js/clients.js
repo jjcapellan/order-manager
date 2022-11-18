@@ -36,12 +36,12 @@ function initClients() {
 function hl_btAddClient() {
     setClientId('');
     formTitle.innerHTML = 'NEW CLIENT';
-    location.replace('#screen-form-client');
+    scrollToAnchor('screen-form-client');
 }
 
 function hl_btCancelClient() {
     form.reset();
-    location.replace('#clients');
+    scrollToAnchor('clients');
 }
 
 function hl_btDelClient() {
@@ -68,7 +68,7 @@ function hl_btEditClient() {
     setClientId(client.id);
     formTitle.innerHTML = 'EDIT CLIENT';
     populateClientForm(client);
-    location.replace('#screen-form-client');
+    scrollToAnchor('screen-form-client');
 }
 
 function hl_btSubmitClient() {
@@ -81,7 +81,7 @@ function hl_btSubmitClient() {
     db.execTasks();
     form.reset();
     populateClientsList();
-    location.replace('#clients');
+    scrollToAnchor('clients');
     return false;
 }
 
@@ -105,7 +105,7 @@ function hl_tblClients(evt) {
     const order = orderForm.getAttribute('data-active');
     if (order != '') {
         setOrderClient(getSelected());
-        location.replace('#screen-form-order');
+        scrollToAnchor('screen-form-order');
         unselectRows();
     }
     return;

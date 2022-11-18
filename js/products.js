@@ -47,18 +47,18 @@ function initProducts() {
 function hl_btAddProduct() {
     resetProduct();
     formTitle.innerHTML = 'NEW PRODUCT';
-    location.replace('#screen-form-product');
+    scrollToAnchor('screen-form-product');
 }
 
 function hl_btCancelProduct() {
     resetProduct();
-    location.replace('#products');
+    scrollToAnchor('products');
 }
 
 function hl_btCancelProductView() {
     imgProduct.setAttribute('src', '');
     unselectRows();
-    location.replace('#products');
+    scrollToAnchor('products');
 }
 
 function hl_btDelProduct() {
@@ -83,7 +83,7 @@ function hl_btEditProduct() {
         null
     );
     db.execTasks();
-    location.replace('#screen-form-product');
+    scrollToAnchor('screen-form-product');
 
 }
 
@@ -104,7 +104,7 @@ function hl_btSubmitProduct() {
     );
     db.execTasks();
     populateProductsList();
-    location.replace('#products');
+    scrollToAnchor('products');
     return false;
 }
 
@@ -120,7 +120,7 @@ function hl_btViewProduct() {
         null
     );
     db.execTasks();
-    location.replace('#product-view');
+    scrollToAnchor('product-view');
 }
 
 function hl_iPhoto(evt) {
@@ -162,7 +162,7 @@ function hl_tblProducts(evt) {
         db.customTask(addDetail, window, product);
         db.customTask(
             () => {
-                location.replace('#screen-form-order');
+                scrollToAnchor('screen-form-order');
                 unselectRows()
             },
             window,
