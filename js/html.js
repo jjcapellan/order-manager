@@ -10,9 +10,11 @@ import {
 import {
     hl_btAddProduct,
     hl_btCancelProduct,
+    hl_btCancelProductView,
     hl_btDelProduct,
     hl_btEditProduct,
     hl_btSubmitProduct,
+    hl_btViewProduct,
     hl_iPhoto,
     hl_iProductName,
     hl_iProductPrice,
@@ -97,15 +99,17 @@ function setupOrderEvents() {
 }
 
 function setupProductEvents() {
-    document.getElementById('product-name').addEventListener('change', hl_iProductName);
-    document.getElementById('product-price').addEventListener('change', hl_iProductPrice);
-    document.getElementById('photo').addEventListener('change', hl_iPhoto);
     document.getElementById('bt-add-product').addEventListener('click', hl_btAddProduct);
+    document.getElementById('bt-cancel-product-view').addEventListener('click', hl_btCancelProductView);
     document.getElementById('bt-cancel-product').addEventListener('click', hl_btCancelProduct);
     document.getElementById('bt-del-product').addEventListener('click', hl_btDelProduct);
     document.getElementById('bt-edit-product').addEventListener('click', hl_btEditProduct);
+    document.getElementById('bt-view-product').addEventListener('click', hl_btViewProduct);
     document.getElementById('bt-products-back').addEventListener('click', () => { scrollToAnchor('menu'); });
     document.getElementById('form-product').addEventListener('submit', hl_btSubmitProduct);
+    document.getElementById('photo').addEventListener('change', hl_iPhoto);
+    document.getElementById('product-name').addEventListener('change', hl_iProductName);
+    document.getElementById('product-price').addEventListener('change', hl_iProductPrice);
     document.getElementById('table-products').addEventListener('click', hl_tblProducts);
 }
 

@@ -10,7 +10,9 @@ const form = document.getElementById('form-product');
 const formTitle = document.getElementById('change-products-title');
 const screenForm = document.getElementById('screen-form-product');
 const orderForm = document.getElementById('screen-form-order');
-const imgProduct = document.getElementById('product-photo');
+const imgProductThb = document.getElementById('product-thumbnail');
+const imgProduct = document.getElementById('product-img');
+const photoTitle = document.getElementById('photo-title');
 
 const product = {
     name: null,
@@ -50,6 +52,11 @@ function hl_btAddProduct() {
 
 function hl_btCancelProduct() {
     resetProduct();
+    location.replace('#products');
+}
+
+function hl_btCancelProductView() {
+    imgProduct.setAttribute('src', '');
     location.replace('#products');
 }
 
@@ -100,12 +107,27 @@ function hl_btSubmitProduct() {
     return false;
 }
 
+function hl_btViewProduct() {
+    setSelected();
+    db.customTask(
+        () => {
+            photoTitle.innerHTML = product.name;
+            const imgUrl = URL.createObjectURL(product.imgblob);
+            imgProduct.setAttribute('src', imgUrl);
+        },
+        this,
+        null
+    );
+    db.execTasks();
+    location.replace('#product-view');
+}
+
 function hl_iPhoto(evt) {
     const imgBlob = evt.target.files[0];
     if (!imgBlob) return;
     product.imgblob = imgBlob;
     let imgUrl = URL.createObjectURL(imgBlob);
-    imgProduct.setAttribute('src', imgUrl);
+    imgProductThb.setAttribute('src', imgUrl);
 }
 
 function hl_iProductName() {
@@ -185,7 +207,7 @@ function populateProductForm(_product) {
     }
 
     let imgUrl = URL.createObjectURL(_product.imgblob);
-    imgProduct.setAttribute('src', imgUrl);
+    imgProductThb.setAttribute('src', imgUrl);
 }
 
 function populateProductsList() {
@@ -206,7 +228,7 @@ function resetProduct() {
     productId = null;
 
     form.reset();
-    imgProduct.setAttribute('src', '');
+    imgProductThb.setAttribute('src', '');
 }
 
 function setSelected() {
@@ -245,9 +267,11 @@ function updateProduct(product) {
 export {
     hl_btAddProduct,
     hl_btCancelProduct,
+    hl_btCancelProductView,
     hl_btDelProduct,
     hl_btEditProduct,
     hl_btSubmitProduct,
+    hl_btViewProduct,
     hl_iPhoto,
     hl_iProductName,
     hl_iProductPrice,

@@ -162,7 +162,12 @@ tr {
     width: 100%;
 }
 
-#product-photo {
+.photo-small {
     max-width: 200px;
     max-height: 200px;
+}
+
+.photo-large {
+    max-width: 95%;
+    max-height: 95%;
 }

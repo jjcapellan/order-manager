@@ -50,6 +50,9 @@
         <div id="products" class="container">
             <div class="bar bar-top">
                 <h3>PRODUCTS</h3>
+                <a id="bt-view-product">
+                    <object data="assets/icons/preview_white_48dp.svg"></object>
+                </a>
                 <a id="bt-del-product">
                     <object data="assets/icons/delete_white_48dp.svg"></object>
                 </a>
@@ -139,7 +142,7 @@
                         <input type="file" id="photo" name="photo" placeholder="Select image..." accept="image/*" hidden>
 
                     <input type="submit" id="submit-product" hidden />
-                    <img id="product-photo">
+                    <img id="product-thumbnail" class="photo-small">
                 </form>
                 
             </div>
@@ -178,6 +181,22 @@
                 <a id="bt-submit-order">
                     <object data="assets/icons/done_white_48dp.svg"></object>
                 </a>
+            </div>
+        </div>
+
+        <!-- PRODUCT VIEW -->
+        <div id="product-view" class="container">
+            <div class="bar bar-top">
+                <h4 id="photo-title">PHOTO</h4>
+            </div>
+            <div class="list-panel">
+                <img id="product-img" class="photo-large">            
+            </div>
+            <div class="bar">
+                <a id="bt-cancel-product-view">
+                    <object data="assets/icons/close_white_48dp.svg"></object>
+                </a>
+
             </div>
         </div>
         <!-- WRAPPER END-->
