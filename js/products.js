@@ -10,6 +10,7 @@ const form = document.getElementById('form-product');
 const formTitle = document.getElementById('change-products-title');
 const screenForm = document.getElementById('screen-form-product');
 const orderForm = document.getElementById('screen-form-order');
+const imgProduct = document.getElementById('product-photo');
 
 //
 //
@@ -80,9 +81,17 @@ function hl_btSubmitProduct() {
     }
     db.execTasks();
     form.reset();
+    imgProduct.setAttribute('src','');
     populateProductsList();
     location.replace('#products');
     return false;
+}
+
+function hl_iPhoto(evt) {
+    const imgBlob = evt.target.files[0];
+    if (!imgBlob) return;
+    let imgUrl = URL.createObjectURL(imgBlob);
+    imgProduct.setAttribute('src', imgUrl);
 }
 
 function hl_tblProducts(evt) {
@@ -186,6 +195,7 @@ export {
     hl_btDelProduct,
     hl_btEditProduct,
     hl_btSubmitProduct,
+    hl_iPhoto,
     initProducts,
     hl_tblProducts,
 };

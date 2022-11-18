@@ -13,6 +13,7 @@ import {
     hl_btDelProduct,
     hl_btEditProduct,
     hl_btSubmitProduct,
+    hl_iPhoto,
     hl_tblProducts,
 } from './products.js';
 
@@ -94,6 +95,7 @@ function setupOrderEvents() {
 }
 
 function setupProductEvents() {
+    document.getElementById('photo').addEventListener('change', hl_iPhoto);
     document.getElementById('bt-add-product').addEventListener('click', hl_btAddProduct);
     document.getElementById('bt-cancel-product').addEventListener('click', hl_btCancelProduct);
     document.getElementById('bt-del-product').addEventListener('click', hl_btDelProduct);

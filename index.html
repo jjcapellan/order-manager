@@ -135,9 +135,13 @@
 
                     <!--<input type="file" class="textbox" name="photo" placeholder="Select image..." size=20
                         capture="environment" accept="image/*" />-->
+                        <label id="photo-label" for="photo" class="bt-input-200" >Image</label>
+                        <input type="file" id="photo" name="photo" placeholder="Select image..." accept="image/*" hidden>
 
                     <input type="submit" id="submit-product" hidden />
+                    <img id="product-photo">
                 </form>
+                
             </div>
             <div class="bar">
                 <a id="bt-cancel-product">
