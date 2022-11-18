@@ -17,7 +17,7 @@ const product = {
     price: null,
     imgblob: null,
 }
-const abc = 36;
+
 let productId = null;
 
 //
@@ -68,7 +68,7 @@ function hl_btEditProduct() {
     db.customTask(
         () => {
             formTitle.innerHTML = 'EDIT PRODUCT';
-            populateProductForm(product);            
+            populateProductForm(product);
             unselectRows();
         },
         this,
@@ -89,7 +89,7 @@ function hl_btSubmitProduct() {
         () => {
             resetProduct();
             unselectRows();
-            
+
         },
         window,
         null
@@ -110,7 +110,6 @@ function hl_iPhoto(evt) {
 
 function hl_iProductName() {
     product.name = form.elements[0].value;
-    console.log(product.name);
 }
 
 function hl_iProductPrice() {
@@ -158,24 +157,6 @@ function hl_tblProducts(evt) {
 //
 //
 
-function setSelected() {
-    const rowIndex = productsTable.getAttribute('data-row');
-    if (rowIndex == '') {
-        return null;
-    }
-    console.log('rowIndex', rowIndex);
-    const tr = productsTable.rows[rowIndex];
-    const _productId = tr.children[0].getAttribute('data-id');
-    console.log('productId', _productId);
-    productId = _productId;
-    productStore.get(+_productId,
-        (_product) => {
-            product.name = _product[0].name;
-            product.price = _product[0].price;
-            product.imgblob = _product[0].imgblob;
-        });
-}
-
 function getSelectedId(delRow) {
     const rowIndex = productsTable.getAttribute('data-row');
     if (rowIndex == '') {
@@ -208,13 +189,12 @@ function populateProductForm(_product) {
 }
 
 function populateProductsList() {
-    productIndex.getAll((result) => {
+    productIndex.getAll((results) => {
         let str = '';
-        for (let i = 0; i < result.length; i++) {
-            str += `<tr><td data-id="${result[i].id}">${result[i].name}</td><td>${result[i].price}</td></tr>`;
+        for (let i = 0; i < results.length; i++) {
+            str += `<tr><td data-id="${results[i].id}">${results[i].name}</td><td>${results[i].price}</td></tr>`;
         }
         productsTable.innerHTML = str;
-        console.log(productsTable);
     });
     db.execTasks();
 }
@@ -229,6 +209,24 @@ function resetProduct() {
     imgProduct.setAttribute('src', '');
 }
 
+function setSelected() {
+    const rowIndex = productsTable.getAttribute('data-row');
+    if (rowIndex == '') {
+        return null;
+    }
+    const tr = productsTable.rows[rowIndex];
+    const _productId = tr.children[0].getAttribute('data-id');
+    productId = _productId;
+    productStore.get(
+        +_productId,
+        (results) => {
+            product.name = results[0].name;
+            product.price = results[0].price;
+            product.imgblob = results[0].imgblob;
+        }
+    );
+}
+
 function unselectRows() {
     const rowIndex = productsTable.getAttribute('data-row');
     if (rowIndex == '') {
@@ -240,9 +238,8 @@ function unselectRows() {
 }
 
 function updateProduct(product) {
-    console.log('update', productId);
     productStore.update(+productId, { name: product.name, price: product.price, imgblob: product.imgblob });
-    
+
 }
 
 export {
