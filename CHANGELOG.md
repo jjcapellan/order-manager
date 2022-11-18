@@ -1,15 +1,8 @@
-# WIP
-## Fixes
-* **Rows still selected after product view**
-* **Navigation history not empty**: function scrollToAnchor() used instead location.replace().
-
----
-
 # v0.1.0-alpha.4
 ## New features
 * **Product image**
 ## Fixes
-* **Poluted navigation history**: navigation using links has been replaced by function *scrollToAnchor*
+* **Poluted navigation history**: navigation using links or location.replace() has been replaced by function *scrollToAnchor*
 
 ---
 
