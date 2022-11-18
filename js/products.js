@@ -12,6 +12,14 @@ const screenForm = document.getElementById('screen-form-product');
 const orderForm = document.getElementById('screen-form-order');
 const imgProduct = document.getElementById('product-photo');
 
+const product = {
+    name: null,
+    price: null,
+    imgblob: null,
+}
+const abc = 36;
+let productId = null;
+
 //
 //
 //
@@ -35,53 +43,58 @@ function initProducts() {
 //
 
 function hl_btAddProduct() {
-    setProductId('');
+    resetProduct();
     formTitle.innerHTML = 'NEW PRODUCT';
     location.replace('#screen-form-product');
 }
 
 function hl_btCancelProduct() {
-    form.reset();
+    resetProduct();
     location.replace('#products');
 }
 
 function hl_btDelProduct() {
-    const rowIndex = productsTable.getAttribute('data-row');
-    if (rowIndex == '') {
+    const _productId = getSelectedId(true);
+    if (!_productId) {
         alert('No product selected');
         return;
     }
-    const tr = productsTable.rows[rowIndex];
-    const productId = tr.children[0].getAttribute('data-id');
-    productsTable.setAttribute('data-row', '');
-    tr.className = '';
-    productStore.del(+productId);
+    productStore.del(+_productId);
     db.execTasks();
-    tr.remove();
 }
 
 function hl_btEditProduct() {
-    const product = getSelected();
-    if (!product) {
-        alert('No product selected');
-        return;
-    }
-    setProductId(product.id);
-    formTitle.innerHTML = 'EDIT PRODUCT';
-    populateProductForm(product);
+    setSelected();
+    db.customTask(
+        () => {
+            formTitle.innerHTML = 'EDIT PRODUCT';
+            populateProductForm(product);            
+            unselectRows();
+        },
+        this,
+        null
+    );
+    db.execTasks();
     location.replace('#screen-form-product');
+
 }
 
 function hl_btSubmitProduct() {
-    const product = readForm(form);
-    if (product.id == '') {
+    if (formTitle.innerHTML == 'NEW PRODUCT') {
         newProduct(product);
     } else {
         updateProduct(product);
     }
+    db.customTask(
+        () => {
+            resetProduct();
+            unselectRows();
+            
+        },
+        window,
+        null
+    );
     db.execTasks();
-    form.reset();
-    imgProduct.setAttribute('src','');
     populateProductsList();
     location.replace('#products');
     return false;
@@ -90,8 +103,18 @@ function hl_btSubmitProduct() {
 function hl_iPhoto(evt) {
     const imgBlob = evt.target.files[0];
     if (!imgBlob) return;
+    product.imgblob = imgBlob;
     let imgUrl = URL.createObjectURL(imgBlob);
     imgProduct.setAttribute('src', imgUrl);
+}
+
+function hl_iProductName() {
+    product.name = form.elements[0].value;
+    console.log(product.name);
+}
+
+function hl_iProductPrice() {
+    product.price = form.elements[1].value;
 }
 
 function hl_tblProducts(evt) {
@@ -113,9 +136,16 @@ function hl_tblProducts(evt) {
 
     const order = orderForm.getAttribute('data-active');
     if (order != '') {
-        addDetail(getSelected());
-        location.replace('#screen-form-order');
-        unselectRows();
+        setSelected();
+        db.customTask(addDetail, window, product);
+        db.customTask(
+            () => {
+                location.replace('#screen-form-order');
+                unselectRows()
+            },
+            window,
+            null
+        );
     }
 }
 
@@ -128,26 +158,53 @@ function hl_tblProducts(evt) {
 //
 //
 
-function getSelected() {
+function setSelected() {
+    const rowIndex = productsTable.getAttribute('data-row');
+    if (rowIndex == '') {
+        return null;
+    }
+    console.log('rowIndex', rowIndex);
+    const tr = productsTable.rows[rowIndex];
+    const _productId = tr.children[0].getAttribute('data-id');
+    console.log('productId', _productId);
+    productId = _productId;
+    productStore.get(+_productId,
+        (_product) => {
+            product.name = _product[0].name;
+            product.price = _product[0].price;
+            product.imgblob = _product[0].imgblob;
+        });
+}
+
+function getSelectedId(delRow) {
     const rowIndex = productsTable.getAttribute('data-row');
     if (rowIndex == '') {
         return null;
     }
     const tr = productsTable.rows[rowIndex];
-    const productId = tr.children[0].getAttribute('data-id');
-    const name = tr.children[0].innerText;
-    const price = tr.children[1].innerText;
-    return { id: productId, name: name, price: price };
+    const _productId = tr.children[0].getAttribute('data-id');
+    tr.className = '';
+    productsTable.setAttribute('data-row', '');
+    if (delRow) {
+        tr.remove();
+    }
+    return _productId;
 }
 
 function newProduct(product) {
-    productStore.add({ name: product.name, price: product.price });
-    unselectRows();
+    productStore.add({ name: product.name, price: product.price, imgblob: product.imgblob });
 }
 
-function populateProductForm(product) {
-    form.elements[0].value = product.name;
-    form.elements[1].value = product.price;
+function populateProductForm(_product) {
+    form.elements[0].value = _product.name;
+    form.elements[1].value = _product.price;
+
+    if (!_product.imgblob) {
+        return;
+    }
+
+    let imgUrl = URL.createObjectURL(_product.imgblob);
+    imgProduct.setAttribute('src', imgUrl);
 }
 
 function populateProductsList() {
@@ -162,16 +219,14 @@ function populateProductsList() {
     db.execTasks();
 }
 
-function readForm(form) {
-    const productId = screenForm.getAttribute('data-id');
-    const name = form.elements[0].value;
-    const price = form.elements[1].value;
+function resetProduct() {
+    product.name = null;
+    product.price = null;
+    product.imgblob = null;
+    productId = null;
 
-    return { id: productId, name: name, price: price };
-}
-
-function setProductId(id) {
-    screenForm.setAttribute('data-id', id);
+    form.reset();
+    imgProduct.setAttribute('src', '');
 }
 
 function unselectRows() {
@@ -185,8 +240,9 @@ function unselectRows() {
 }
 
 function updateProduct(product) {
-    productStore.update(+product.id, { name: product.name, price: product.price });
-    unselectRows();
+    console.log('update', productId);
+    productStore.update(+productId, { name: product.name, price: product.price, imgblob: product.imgblob });
+    
 }
 
 export {
@@ -196,6 +252,8 @@ export {
     hl_btEditProduct,
     hl_btSubmitProduct,
     hl_iPhoto,
-    initProducts,
+    hl_iProductName,
+    hl_iProductPrice,
     hl_tblProducts,
+    initProducts,
 };

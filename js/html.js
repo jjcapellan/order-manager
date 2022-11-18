@@ -14,6 +14,8 @@ import {
     hl_btEditProduct,
     hl_btSubmitProduct,
     hl_iPhoto,
+    hl_iProductName,
+    hl_iProductPrice,
     hl_tblProducts,
 } from './products.js';
 
@@ -95,6 +97,8 @@ function setupOrderEvents() {
 }
 
 function setupProductEvents() {
+    document.getElementById('product-name').addEventListener('change', hl_iProductName);
+    document.getElementById('product-price').addEventListener('change', hl_iProductPrice);
     document.getElementById('photo').addEventListener('change', hl_iPhoto);
     document.getElementById('bt-add-product').addEventListener('click', hl_btAddProduct);
     document.getElementById('bt-cancel-product').addEventListener('click', hl_btCancelProduct);
