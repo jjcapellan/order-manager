@@ -1,3 +1,13 @@
+# v0.1.0-alpha.5
+## New features
+* **Multilanguage**: englih, spanish.
+## Fixes
+* **Add client causes page reload**
+* **Add product causes page reload**
+* **New order operation not executed**
+
+---
+
 # v0.1.0-alpha.4
 ## New features
 * **Product image**
