@@ -88,7 +88,8 @@ function hl_btEditProduct() {
 
 }
 
-function hl_btSubmitProduct() {
+function hl_btSubmitProduct(evt) {
+    evt.preventDefault();
     if (formTitle.innerHTML == label.NEW_PRODUCT) {
         newProduct(product);
     } else {
@@ -106,7 +107,6 @@ function hl_btSubmitProduct() {
     db.execTasks();
     populateProductsList();
     scrollToAnchor('products');
-    return false;
 }
 
 function hl_btViewProduct() {
