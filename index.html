@@ -23,7 +23,7 @@
         <!-- CLIENTS SCREEN -->
         <div id="clients" class="container">
             <div class="bar bar-top">
-                <h3>CLIENTS</h3>
+                <h3 class="string">CLIENTS</h3>
                 <a id="bt-del-client">
                     <object data="assets/icons/delete_white_48dp.svg"></object>
                 </a>
@@ -49,7 +49,7 @@
         <!-- PRODUCTS SCREEN -->
         <div id="products" class="container">
             <div class="bar bar-top">
-                <h3>PRODUCTS</h3>
+                <h3 class="string">PRODUCTS</h3>
                 <a id="bt-view-product">
                     <object data="assets/icons/preview_white_48dp.svg"></object>
                 </a>
@@ -77,7 +77,7 @@
         <!-- ORDERS SCREEN -->
         <div id="orders" class="container">
             <div class="bar bar-top">
-                <h3>ORDERS</h3>
+                <h3 class="string">ORDERS</h3>
                 <a id="bt-view-order">
                     <object data="assets/icons/preview_white_48dp.svg"></object>
                 </a>
@@ -105,7 +105,7 @@
         <!-- ADD/EDIT CLIENT SCREEN -->
         <div id="screen-form-client" data-id="" class="container">
             <div class="bar">
-                <h3 id="change-clients-title">NEW CLIENT</h3>
+                <h3 id="change-clients-title" class="string">NEW_CLIENT</h3>
             </div>
             <div class="list-panel">
                 <form class="form-center" id="form-client">
@@ -131,7 +131,7 @@
         <!-- ADD/EDIT PRODUCT SCREEN -->
         <div id="screen-form-product" data-id="" class="container">
             <div class="bar">
-                <h3 id="change-products-title">NEW PRODUCT</h3>
+                <h3 id="change-products-title" class="string">NEW_PRODUCT</h3>
             </div>
             <div class="list-panel">
                 <form class="form-center" id="form-product">
@@ -143,7 +143,7 @@
 
                     <!--<input type="file" class="textbox" name="photo" placeholder="Select image..." size=20
                         capture="environment" accept="image/*" />-->
-                    <label id="photo-label" for="photo" class="bt-input-200">Image</label>
+                    <label id="photo-label" for="photo" class="bt-input-200 string">Image</label>
                     <input type="file" id="photo" name="photo" placeholder="Select image..." accept="image/*" hidden>
 
                     <input type="submit" id="submit-product" hidden />
@@ -164,13 +164,13 @@
         <!-- ADD/EDIT ORDER SCREEN -->
         <div id="screen-form-order" data-row="" data-active="" class="container">
             <div class="bar">
-                <h3 id="change-orders-title">NEW ORDER</h3>
+                <h3 id="change-orders-title" class="string">NEW_ORDER</h3>
             </div>
             <div class="list-panel">
                 <div class="w100">
                     <div class="popup" id="popup-qty" hidden>
                         <input type="number" id="tb-qty" class="textbox" placeHolder="Enter amount" size=6 />
-                        <h5>0 to remove product</h5>
+                        <h5 class="string">Zero_to_remove_product</h5>
                     </div>
                     <table>
                         <tbody id="table-details"></tbody>

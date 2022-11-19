@@ -1,4 +1,5 @@
 import { addDetail } from "./orders.js";
+import { label } from "./strings.js";
 //// LOCAL CONSTSTANTS ////
 ///////////////////////////
 //
@@ -46,7 +47,7 @@ function initProducts() {
 
 function hl_btAddProduct() {
     resetProduct();
-    formTitle.innerHTML = 'NEW PRODUCT';
+    formTitle.innerHTML = label.NEW_PRODUCT;
     scrollToAnchor('screen-form-product');
 }
 
@@ -75,7 +76,7 @@ function hl_btEditProduct() {
     setSelected();
     db.customTask(
         () => {
-            formTitle.innerHTML = 'EDIT PRODUCT';
+            formTitle.innerHTML = label.EDIT_PRODUCT;
             populateProductForm(product);
             unselectRows();
         },
@@ -88,7 +89,7 @@ function hl_btEditProduct() {
 }
 
 function hl_btSubmitProduct() {
-    if (formTitle.innerHTML == 'NEW PRODUCT') {
+    if (formTitle.innerHTML == label.NEW_PRODUCT) {
         newProduct(product);
     } else {
         updateProduct(product);

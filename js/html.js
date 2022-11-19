@@ -76,8 +76,9 @@ function checkViewport() {
 function initLabels() {
     let strs = document.getElementsByClassName('string');
     for (let i = 0; i < strs.length; i++) {
-        let newLabel = label[strs[i].innerHTML];
-        strs[i].innerHTML = newLabel;
+        console.log(strs[i]);
+        let newLabel = label[strs[i].innerText];
+        strs[i].innerText = newLabel;
     }
 }
 

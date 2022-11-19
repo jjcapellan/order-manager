@@ -1,3 +1,5 @@
+import { label } from './strings.js';
+
 //// LOCAL CONSTSTANTS ////
 ///////////////////////////
 //
@@ -38,7 +40,7 @@ function initOrders() {
 
 function hl_btAddOrder() {
     setDate();
-    formTitle.innerHTML = 'NEW ORDER';
+    formTitle.innerHTML = label.NEW_ORDER;
     scrollToAnchor('screen-form-order');
     unselectRows();
 }
@@ -75,7 +77,7 @@ function hl_btEditOrder() {
         (_order) => {
             populateOrderForm(_order[0]);
             screenForm.setAttribute('data-active', 'true');
-            formTitle.innerHTML = 'EDIT ORDER';
+            formTitle.innerHTML = label.EDIT_ORDER;
             scrollToAnchor('screen-form-order');
         });
     db.execTasks();
@@ -98,7 +100,7 @@ function hl_btSubmitOrder() {
         return;
     }
 
-    if (formTitle.innerHTML == 'NEW ORDER') {
+    if (formTitle.innerHTML == label.NEW_ORDER) {
         orderStore.add(
             order,
             {
@@ -110,7 +112,7 @@ function hl_btSubmitOrder() {
                     }
             });
 
-    } else if (formTitle.innerHTML == 'EDIT ORDER') {
+    } else if (formTitle.innerHTML == label.EDIT_ORDER) {
         orderStore.update(
             +orderId,
             order,
@@ -141,7 +143,7 @@ function hl_btViewOrder() {
             btSelectProduct.style.display = 'none';
             btSubmitOrder.style.display = 'none';
             tblDetails.style.pointerEvents = 'none';
-            formTitle.innerHTML = 'VIEW ORDER';
+            formTitle.innerHTML = label.VIEW_ORDER;
             unselectRows();
             scrollToAnchor('screen-form-order');
         }

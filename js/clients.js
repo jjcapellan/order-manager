@@ -1,4 +1,5 @@
 import { setOrderClient } from './orders.js';
+import { label } from "./strings.js";
 //// LOCAL CONSTSTANTS ////
 ///////////////////////////
 //
@@ -35,7 +36,8 @@ function initClients() {
 
 function hl_btAddClient() {
     setClientId('');
-    formTitle.innerHTML = 'NEW CLIENT';
+    console.log(formTitle);
+    formTitle.innerHTML = label.NEW_CLIENT;
     scrollToAnchor('screen-form-client');
 }
 
@@ -66,7 +68,7 @@ function hl_btEditClient() {
         return;
     }
     setClientId(client.id);
-    formTitle.innerHTML = 'EDIT CLIENT';
+    formTitle.innerHTML = label.EDIT_CLIENT;
     populateClientForm(client);
     scrollToAnchor('screen-form-client');
 }
