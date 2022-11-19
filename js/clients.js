@@ -73,18 +73,24 @@ function hl_btEditClient() {
     scrollToAnchor('screen-form-client');
 }
 
-function hl_btSubmitClient() {
+function hl_btSubmitClient(evt) {
+    evt.preventDefault();
     const client = readForm(form);
-    if (client.id == '') {
+    if (formTitle.innerHTML == label.NEW_CLIENT) {
         newClient(client);
     } else {
         updateClient(client);
     }
+    db.customTask(
+        () => {
+            form.reset();
+            unselectRows();
+        }
+    )
     db.execTasks();
-    form.reset();
+
     populateClientsList();
     scrollToAnchor('clients');
-    return false;
 }
 
 function hl_tblClients(evt) {
@@ -136,7 +142,6 @@ function getSelected() {
 
 function newClient(client) {
     clientStore.add({ name: client.name, tel: client.tel });
-    unselectRows();
 }
 
 function populateClientForm(client) {
@@ -179,7 +184,6 @@ function unselectRows() {
 
 function updateClient(client) {
     clientStore.update(+client.id, { name: client.name, tel: client.tel });
-    unselectRows();
 }
 
 
