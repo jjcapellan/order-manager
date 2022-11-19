@@ -51,10 +51,11 @@ import {
 function initHtml() {
     checkViewport();
     setupWindowEvents();
-    setupClientEvents();
-    setupMenuEvents();
+    setupClients();
+    setupMenu();
     setupProductEvents();
     setupOrderEvents();
+    initLabels();
 }
 
 //
@@ -72,7 +73,15 @@ function checkViewport() {
     scrollToAnchor(location.hash.substring(1));
 }
 
-function setupClientEvents() {
+function initLabels() {
+    let strs = document.getElementsByClassName('string');
+    for (let i = 0; i < strs.length; i++) {
+        let newLabel = label[strs[i].innerHTML];
+        strs[i].innerHTML = newLabel;
+    }
+}
+
+function setupClients() {
     document.getElementById('bt-add-client').addEventListener('click', hl_btAddClient);
     document.getElementById('bt-cancel-client').addEventListener('click', hl_btCancelClient);
     document.getElementById('bt-clients-back').addEventListener('click', () => { scrollToAnchor('menu'); });
@@ -82,17 +91,10 @@ function setupClientEvents() {
     document.getElementById('table-clients').addEventListener('click', hl_tblClients);
 }
 
-function setupMenuEvents() {
-    const btClients = document.getElementById('bt-clients');
-    const btProducts = document.getElementById('bt-products');
-    const btOrders = document.getElementById('bt-orders');
-    btClients.addEventListener('click', () => { window.scrollToAnchor('clients'); });
-    btProducts.addEventListener('click', () => { window.scrollToAnchor('products'); });
-    btOrders.addEventListener('click', () => { window.scrollToAnchor('orders'); });
-    btClients.innerHTML = label.btClients;
-    btProducts.innerHTML = label.btProducts;
-    btOrders.innerHTML = label.btOrders;
-
+function setupMenu() {
+    document.getElementById('bt-clients').addEventListener('click', () => { window.scrollToAnchor('clients'); });
+    document.getElementById('bt-products').addEventListener('click', () => { window.scrollToAnchor('products'); });
+    document.getElementById('bt-orders').addEventListener('click', () => { window.scrollToAnchor('orders'); });
 }
 
 function setupOrderEvents() {

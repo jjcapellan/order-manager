@@ -15,9 +15,9 @@
 
         <!-- MENU SCREEN -->
         <div id="menu" class="container">
-            <a id="bt-clients" class="bt-link">CLIENTS</a>
-            <a id="bt-products" class="bt-link">PRODUCTS</a>
-            <a id="bt-orders" class="bt-link">ORDERS</a>
+            <a id="bt-clients" class="bt-link string">CLIENTS</a>
+            <a id="bt-products" class="bt-link string">PRODUCTS</a>
+            <a id="bt-orders" class="bt-link string">ORDERS</a>
         </div>
 
         <!-- CLIENTS SCREEN -->
@@ -104,7 +104,9 @@
 
         <!-- ADD/EDIT CLIENT SCREEN -->
         <div id="screen-form-client" data-id="" class="container">
-            <div class="bar" id="change-clients-title">NEW CLIENT</div>
+            <div class="bar">
+                <h3 id="change-clients-title">NEW CLIENT</h3>
+            </div>
             <div class="list-panel">
                 <form class="form-center" id="form-client">
 
@@ -128,23 +130,26 @@
 
         <!-- ADD/EDIT PRODUCT SCREEN -->
         <div id="screen-form-product" data-id="" class="container">
-            <div class="bar" id="change-products-title">NEW PRODUCT</div>
+            <div class="bar">
+                <h3 id="change-products-title">NEW PRODUCT</h3>
+            </div>
             <div class="list-panel">
                 <form class="form-center" id="form-product">
 
-                    <input type="text" id="product-name" class="textbox" name="name" placeholder="Enter name..." size=20 required />
-                    <input type="number" id="product-price" step="0.01" class="textbox" name="price" placeholder="Enter price..." size=20
+                    <input type="text" id="product-name" class="textbox" name="name" placeholder="Enter name..." size=20
                         required />
+                    <input type="number" id="product-price" step="0.01" class="textbox" name="price"
+                        placeholder="Enter price..." size=20 required />
 
                     <!--<input type="file" class="textbox" name="photo" placeholder="Select image..." size=20
                         capture="environment" accept="image/*" />-->
-                        <label id="photo-label" for="photo" class="bt-input-200" >Image</label>
-                        <input type="file" id="photo" name="photo" placeholder="Select image..." accept="image/*" hidden>
+                    <label id="photo-label" for="photo" class="bt-input-200">Image</label>
+                    <input type="file" id="photo" name="photo" placeholder="Select image..." accept="image/*" hidden>
 
                     <input type="submit" id="submit-product" hidden />
                     <img id="product-thumbnail" class="photo-small">
                 </form>
-                
+
             </div>
             <div class="bar">
                 <a id="bt-cancel-product">
@@ -158,7 +163,9 @@
 
         <!-- ADD/EDIT ORDER SCREEN -->
         <div id="screen-form-order" data-row="" data-active="" class="container">
-            <div class="bar" id="change-orders-title">NEW ORDER</div>
+            <div class="bar">
+                <h3 id="change-orders-title">NEW ORDER</h3>
+            </div>
             <div class="list-panel">
                 <div class="w100">
                     <div class="popup" id="popup-qty" hidden>
@@ -190,7 +197,7 @@
                 <h4 id="photo-title">PHOTO</h4>
             </div>
             <div class="list-panel">
-                <img id="product-img" class="photo-large">            
+                <img id="product-img" class="photo-large">
             </div>
             <div class="bar">
                 <a id="bt-cancel-product-view">

@@ -1,15 +1,15 @@
 const language = navigator.language.substring(0, 2);
 
 const spStr = {
-    btClients: 'CLIENTES',
-    btProducts: 'PRODUCTOS',
-    btOrders: 'PEDIDOS',
+    CLIENTS: 'CLIENTES',
+    PRODUCTS: 'PRODUCTOS',
+    ORDERS: 'PEDIDOS',
 }
 
 const enStr = {
-    btClients: 'CLIENTES',
-    btProducts: 'PRODUCTOS',
-    btOrders: 'PEDIDOS',
+    CLIENTS: 'CLIENTS',
+    PRODUCTS: 'PRODUCTS',
+    ORDERS: 'ORDERS',
 }
 
 const label = language == 'es' ? spStr : enStr;
