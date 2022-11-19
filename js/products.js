@@ -169,6 +169,7 @@ function hl_tblProducts(evt) {
             window,
             null
         );
+        db.execTasks();
     }
 }
 
