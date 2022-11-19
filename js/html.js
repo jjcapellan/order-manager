@@ -1,4 +1,8 @@
 import {
+    label,
+} from './strings.js';
+
+import {
     hl_btAddClient,
     hl_btCancelClient,
     hl_btDelClient,
@@ -79,9 +83,16 @@ function setupClientEvents() {
 }
 
 function setupMenuEvents() {
-    document.getElementById('bt-clients').addEventListener('click', () => { window.scrollToAnchor('clients'); });
-    document.getElementById('bt-products').addEventListener('click', () => { window.scrollToAnchor('products'); });
-    document.getElementById('bt-orders').addEventListener('click', () => { window.scrollToAnchor('orders'); });
+    const btClients = document.getElementById('bt-clients');
+    const btProducts = document.getElementById('bt-products');
+    const btOrders = document.getElementById('bt-orders');
+    btClients.addEventListener('click', () => { window.scrollToAnchor('clients'); });
+    btProducts.addEventListener('click', () => { window.scrollToAnchor('products'); });
+    btOrders.addEventListener('click', () => { window.scrollToAnchor('orders'); });
+    btClients.innerHTML = label.btClients;
+    btProducts.innerHTML = label.btProducts;
+    btOrders.innerHTML = label.btOrders;
+
 }
 
 function setupOrderEvents() {
