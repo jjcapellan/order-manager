@@ -1,5 +1,6 @@
 import { addDetail } from "./orders.js";
 import { label } from "./strings.js";
+import { resizeBlobImg } from "./image.js";
 //// LOCAL CONSTSTANTS ////
 ///////////////////////////
 //
@@ -124,12 +125,19 @@ function hl_btViewProduct() {
     scrollToAnchor('product-view');
 }
 
-function hl_iPhoto(evt) {
+async function hl_iPhoto(evt) {
     const imgBlob = evt.target.files[0];
     if (!imgBlob) return;
-    product.imgblob = imgBlob;
-    let imgUrl = URL.createObjectURL(imgBlob);
-    imgProductThb.setAttribute('src', imgUrl);
+    let resBlob = resizeBlobImg(
+        imgBlob,
+        window.innerWidth * devicePixelRatio,
+        window.innerHeight * devicePixelRatio,
+        (blob) => {
+            product.imgblob = blob;
+            let imgUrl = URL.createObjectURL(blob);
+            imgProductThb.setAttribute('src', imgUrl);
+        }
+    );
 }
 
 function hl_iProductName() {
