@@ -15,31 +15,31 @@
 
         <!-- MENU SCREEN -->
         <div id="menu" class="container">
-            <a id="bt-clients" class="bt-link string">CLIENTS</a>
-            <a id="bt-products" class="bt-link string">PRODUCTS</a>
-            <a id="bt-orders" class="bt-link string">ORDERS</a>
+            <a id="bt-clients" class="clhl bt-link string">CLIENTS</a>
+            <a id="bt-products" class="clhl bt-link string">PRODUCTS</a>
+            <a id="bt-orders" class="clhl bt-link string">ORDERS</a>
         </div>
 
         <!-- CLIENTS SCREEN -->
         <div id="clients" class="container">
             <div class="bar bar-top">
                 <h3 class="string">CLIENTS</h3>
-                <a id="bt-del-client">
+                <a id="bt-del-client" class="clhl">
                     <object data="assets/icons/delete_white_48dp.svg"></object>
                 </a>
             </div>
             <div class="list-panel" id="clientsList">
-                <table id="table-clients" data-row=""></table>
+                <table id="table-clients" data-row="" class="clhl"></table>
             </div>
             <div class="bar">
-                <a id="bt-clients-back">
+                <a id="bt-clients-back" class="clhl">
                     <object data="assets/icons/arrow_back_white_48dp.svg"></object>
                 </a>
-                <a id="bt-edit-client">
+                <a id="bt-edit-client" class="clhl">
                     <object data="assets/icons/edit_white_48dp.svg"></object>
                 </a>
 
-                <a id="bt-add-client">
+                <a id="bt-add-client" class="clhl">
                     <object data="assets/icons/add_white_48dp.svg"></object>
                 </a>
 
@@ -50,25 +50,25 @@
         <div id="products" class="container">
             <div class="bar bar-top">
                 <h3 class="string">PRODUCTS</h3>
-                <a id="bt-view-product">
+                <a id="bt-view-product" class="clhl">
                     <object data="assets/icons/preview_white_48dp.svg"></object>
                 </a>
-                <a id="bt-del-product">
+                <a id="bt-del-product" class="clhl">
                     <object data="assets/icons/delete_white_48dp.svg"></object>
                 </a>
             </div>
             <div class="list-panel" id="products-list">
-                <table id="table-products" data-row=""></table>
+                <table id="table-products" data-row="" class="clhl"></table>
             </div>
             <div class="bar">
-                <a id="bt-products-back">
+                <a id="bt-products-back" class="clhl">
                     <object data="assets/icons/arrow_back_white_48dp.svg"></object>
                 </a>
-                <a id="bt-edit-product">
+                <a id="bt-edit-product" class="clhl">
                     <object data="assets/icons/edit_white_48dp.svg"></object>
                 </a>
 
-                <a id="bt-add-product">
+                <a id="bt-add-product" class="clhl">
                     <object data="assets/icons/add_white_48dp.svg"></object>
                 </a>
             </div>
@@ -78,25 +78,25 @@
         <div id="orders" class="container">
             <div class="bar bar-top">
                 <h3 class="string">ORDERS</h3>
-                <a id="bt-view-order">
+                <a id="bt-view-order" class="clhl">
                     <object data="assets/icons/preview_white_48dp.svg"></object>
                 </a>
-                <a id="bt-del-order">
+                <a id="bt-del-order" class="clhl">
                     <object data="assets/icons/delete_white_48dp.svg"></object>
                 </a>
             </div>
             <div class="list-panel" id="orders-list">
-                <table id="table-orders" data-row=""></table>
+                <table id="table-orders" data-row="" class="clhl"></table>
             </div>
             <div class="bar">
-                <a id="bt-orders-back">
+                <a id="bt-orders-back" class="clhl">
                     <object data="assets/icons/arrow_back_white_48dp.svg"></object>
                 </a>
-                <a id="bt-edit-order">
+                <a id="bt-edit-order" class="clhl">
                     <object data="assets/icons/edit_white_48dp.svg"></object>
                 </a>
 
-                <a id="bt-add-order">
+                <a id="bt-add-order" class="clhl">
                     <object data="assets/icons/add_white_48dp.svg"></object>
                 </a>
             </div>
@@ -119,7 +119,7 @@
                 </form>
             </div>
             <div class="bar">
-                <a id="bt-cancel-client">
+                <a id="bt-cancel-client" class="clhl">
                     <object data="assets/icons/close_white_48dp.svg"></object>
                 </a>
                 <label for="submit-client">
@@ -140,9 +140,6 @@
                         required />
                     <input type="number" id="product-price" step="0.01" class="textbox" name="price"
                         placeholder="Enter price..." size=20 required />
-
-                    <!--<input type="file" class="textbox" name="photo" placeholder="Select image..." size=20
-                        capture="environment" accept="image/*" />-->
                     <label id="photo-label" for="photo" class="bt-input-200 string">Image</label>
                     <input type="file" id="photo" name="photo" placeholder="Select image..." accept="image/*" hidden>
 
@@ -152,10 +149,10 @@
 
             </div>
             <div class="bar">
-                <a id="bt-cancel-product">
+                <a id="bt-cancel-product" class="clhl">
                     <object data="assets/icons/close_white_48dp.svg"></object>
                 </a>
-                <label for="submit-product">
+                <label for="submit-product" class="clhl">
                     <object data="assets/icons/done_white_48dp.svg"></object>
                 </label>
             </div>
@@ -173,19 +170,19 @@
                         <h5 class="string">Zero_to_remove_product</h5>
                     </div>
                     <table>
-                        <tbody id="table-details"></tbody>
+                        <tbody id="table-details" class="clhl"></tbody>
                     </table>
                     <div class="w100">
-                        <input type="button" id="bt-select-client" class="bt-input-200" value="Select Client" />
-                        <input type="button" id="bt-select-product" class="bt-input-200" value="Add product" />
+                        <input type="button" id="bt-select-client" class="clhl bt-input-200" value="Select Client" />
+                        <input type="button" id="bt-select-product" class="clhl bt-input-200" value="Add product" />
                     </div>
                 </div>
             </div>
             <div class="bar">
-                <a id="bt-cancel-order">
+                <a id="bt-cancel-order" class="clhl">
                     <object data="assets/icons/close_white_48dp.svg"></object>
                 </a>
-                <a id="bt-submit-order">
+                <a id="bt-submit-order" class="clhl">
                     <object data="assets/icons/done_white_48dp.svg"></object>
                 </a>
             </div>
@@ -200,7 +197,7 @@
                 <img id="product-img" class="photo-large">
             </div>
             <div class="bar">
-                <a id="bt-cancel-product-view">
+                <a id="bt-cancel-product-view" class="clhl">
                     <object data="assets/icons/close_white_48dp.svg"></object>
                 </a>
 

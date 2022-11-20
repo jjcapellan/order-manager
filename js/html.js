@@ -38,6 +38,47 @@ import {
     hl_tblSelectDetail,
 } from './orders.js';
 
+const clickHandlers = {
+    // Empty function
+    '': () => { },
+
+    // Menu handlers
+    'bt-clients': () => { scrollToAnchor('clients'); },
+    'bt-orders': () => { scrollToAnchor('orders'); },
+    'bt-products': () => { scrollToAnchor('products'); },
+
+    // Client handlers
+    'bt-add-client': hl_btAddClient,
+    'bt-cancel-client': hl_btCancelClient,
+    'bt-clients-back': () => { scrollToAnchor('menu'); },
+    'bt-del-client': hl_btDelClient,
+    'bt-edit-client': hl_btEditClient,
+    'table-clients': hl_tblClients,
+
+    // Product handlers
+    'bt-add-product': hl_btAddProduct,
+    'bt-cancel-product-view': hl_btCancelProductView,
+    'bt-cancel-product': hl_btCancelProduct,
+    'bt-del-product': hl_btDelProduct,
+    'bt-edit-product': hl_btEditProduct,
+    'bt-products-back': () => { scrollToAnchor('menu'); },
+    'bt-view-product': hl_btViewProduct,
+    'table-products': hl_tblProducts,
+
+    // Order handlers
+    'bt_select-client': hl_btSelectClient,
+    'bt-add-order': hl_btAddOrder,
+    'bt-cancel-order': hl_btCancelOrder,
+    'bt-del-order': hl_btDelOrder,
+    'bt-edit-order': hl_btEditOrder,
+    'bt-orders-back': () => { scrollToAnchor('menu'); },
+    'bt-select-product': hl_btSelectProduct,
+    'bt-submit-order': hl_btSubmitOrder,
+    'bt-view-order': hl_btViewOrder,
+    'table-details': hl_tblSelectDetail,
+    'table-orders': hl_tblOrders,    
+}
+
 
 //
 //
@@ -50,11 +91,7 @@ import {
 
 function initHtml() {
     checkViewport();
-    setupWindowEvents();
-    setupClients();
-    setupMenu();
-    setupProductEvents();
-    setupOrderEvents();
+    setupEventHandlers();
     initLabels();
 }
 
@@ -67,6 +104,20 @@ function initHtml() {
 //
 //
 
+function clickHandler(evt) {
+    let id = '';
+    let path = evt.composedPath();
+    // -4 -> body-html-document-window
+    for (let i = 0; i < path.length - 4; i++) {
+        let el = path[i];
+        if (el.classList[0] == 'clhl') {
+            id = el.id;
+            break;
+        }
+    }
+    clickHandlers[id](evt);
+}
+
 function checkViewport() {
     const height = Math.round(window.visualViewport.height + window.visualViewport.offsetTop);
     document.getElementById('css').innerHTML = `div.wrapper{height:${height}px;}`;
@@ -76,61 +127,33 @@ function checkViewport() {
 function initLabels() {
     let strs = document.getElementsByClassName('string');
     for (let i = 0; i < strs.length; i++) {
-        console.log(strs[i]);
         let newLabel = label[strs[i].innerText];
         strs[i].innerText = newLabel;
     }
 }
 
-function setupClients() {
-    document.getElementById('bt-add-client').addEventListener('click', hl_btAddClient);
-    document.getElementById('bt-cancel-client').addEventListener('click', hl_btCancelClient);
-    document.getElementById('bt-clients-back').addEventListener('click', () => { scrollToAnchor('menu'); });
-    document.getElementById('bt-del-client').addEventListener('click', hl_btDelClient);
-    document.getElementById('bt-edit-client').addEventListener('click', hl_btEditClient);
+function setupEventHandlers(){
+    // Window
+    window.visualViewport.onresize = (evt) => {
+        checkViewport();
+    }
+    // Menu
+    document.getElementById('menu').addEventListener('click', clickHandler);
+    // Clients
+    document.getElementById('clients').addEventListener('click', clickHandler);
+    document.getElementById('screen-form-client').addEventListener('click', clickHandler);
     document.getElementById('form-client').addEventListener('submit', hl_btSubmitClient);
-    document.getElementById('table-clients').addEventListener('click', hl_tblClients);
-}
-
-function setupMenu() {
-    document.getElementById('bt-clients').addEventListener('click', () => { window.scrollToAnchor('clients'); });
-    document.getElementById('bt-products').addEventListener('click', () => { window.scrollToAnchor('products'); });
-    document.getElementById('bt-orders').addEventListener('click', () => { window.scrollToAnchor('orders'); });
-}
-
-function setupOrderEvents() {
-    document.getElementById('bt-add-order').addEventListener('click', hl_btAddOrder);
-    document.getElementById('bt-cancel-order').addEventListener('click', hl_btCancelOrder);
-    document.getElementById('bt-del-order').addEventListener('click', hl_btDelOrder);
-    document.getElementById('bt-edit-order').addEventListener('click', hl_btEditOrder);
-    document.getElementById('bt-orders-back').addEventListener('click', () => { scrollToAnchor('menu'); });
-    document.getElementById('bt-select-client').addEventListener('click', hl_btSelectClient);
-    document.getElementById('bt-select-product').addEventListener('click', hl_btSelectProduct);
-    document.getElementById('bt-submit-order').addEventListener('click', hl_btSubmitOrder);
-    document.getElementById('bt-view-order').addEventListener('click', hl_btViewOrder);
-    document.getElementById('table-details').addEventListener('click', hl_tblSelectDetail);
-    document.getElementById('table-orders').addEventListener('click', hl_tblOrders);
-}
-
-function setupProductEvents() {
-    document.getElementById('bt-add-product').addEventListener('click', hl_btAddProduct);
-    document.getElementById('bt-cancel-product-view').addEventListener('click', hl_btCancelProductView);
-    document.getElementById('bt-cancel-product').addEventListener('click', hl_btCancelProduct);
-    document.getElementById('bt-del-product').addEventListener('click', hl_btDelProduct);
-    document.getElementById('bt-edit-product').addEventListener('click', hl_btEditProduct);
-    document.getElementById('bt-view-product').addEventListener('click', hl_btViewProduct);
-    document.getElementById('bt-products-back').addEventListener('click', () => { scrollToAnchor('menu'); });
+    // Products
+    document.getElementById('products').addEventListener('click', clickHandler);
+    document.getElementById('product-view').addEventListener('click', clickHandler);
+    document.getElementById('screen-form-product').addEventListener('click', clickHandler);
     document.getElementById('form-product').addEventListener('submit', hl_btSubmitProduct);
     document.getElementById('photo').addEventListener('change', hl_iPhoto);
     document.getElementById('product-name').addEventListener('change', hl_iProductName);
     document.getElementById('product-price').addEventListener('change', hl_iProductPrice);
-    document.getElementById('table-products').addEventListener('click', hl_tblProducts);
-}
-
-function setupWindowEvents() {
-    window.visualViewport.onresize = (evt) => {
-        checkViewport();
-    }
+    // Orders
+    document.getElementById('orders').addEventListener('click', clickHandler);
+    document.getElementById('screen-form-order').addEventListener('click', clickHandler);
 }
 
 export { initHtml };

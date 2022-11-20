@@ -172,6 +172,13 @@ tr {
     max-height: 95%;
 }
 
-.string{
-    /*dummy class*/
-}
+/*
+
+.string:
+    Identifies labels to change at runtime.
+    Used for multilanguage.
+
+.clhl:
+    Identifies clickable objects
+
+*/
