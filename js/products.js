@@ -114,8 +114,11 @@ function hl_btViewProduct() {
     setSelected();
     db.customTask(
         () => {
+            let imgUrl = 'assets/images/nophoto.png';
             photoTitle.innerHTML = product.name;
-            const imgUrl = URL.createObjectURL(product.imgblob);
+            if (product.imgblob) {
+                imgUrl = URL.createObjectURL(product.imgblob);
+            }
             imgProduct.setAttribute('src', imgUrl);
         },
         this,
