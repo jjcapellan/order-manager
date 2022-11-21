@@ -91,6 +91,11 @@ th {
     margin: 10px auto 10px;
 }
 
+.s48x48 {
+    height: 48px;
+    width: 48px;
+}
+
 .bar {
     display: flex;
     justify-content: space-around;

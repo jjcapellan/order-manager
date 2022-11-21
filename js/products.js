@@ -127,7 +127,9 @@ function hl_btViewProduct() {
 
 async function hl_iPhoto(evt) {
     const imgBlob = evt.target.files[0];
-    if (!imgBlob) return;
+    if (!imgBlob) {
+        return;
+    }
     let resBlob = resizeBlobImg(
         imgBlob,
         window.innerWidth * devicePixelRatio,

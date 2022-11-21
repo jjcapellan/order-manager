@@ -115,6 +115,7 @@ function clickHandler(evt) {
             break;
         }
     }
+    console.log(id);
     clickHandlers[id](evt);
 }
 
