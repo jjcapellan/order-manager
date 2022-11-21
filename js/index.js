@@ -5,7 +5,7 @@ import { initProducts } from './products.js';
 import { initOrders } from './orders.js';
 
 window.scrollToAnchor = (anchor) => {
-    if (anchor == '') anchor = 'menu';
+    if (anchor == '') return;
     const el = document.getElementById(anchor);
     el.scrollIntoView({ inline: 'start' });
 }
