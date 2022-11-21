@@ -66,7 +66,7 @@ const clickHandlers = {
     'table-products': hl_tblProducts,
 
     // Order handlers
-    'bt_select-client': hl_btSelectClient,
+    'bt-select-client': hl_btSelectClient,
     'bt-add-order': hl_btAddOrder,
     'bt-cancel-order': hl_btCancelOrder,
     'bt-del-order': hl_btDelOrder,
@@ -115,7 +115,6 @@ function clickHandler(evt) {
             break;
         }
     }
-    console.log(id);
     clickHandlers[id](evt);
 }
 
