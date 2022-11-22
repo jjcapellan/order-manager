@@ -76,7 +76,7 @@ const clickHandlers = {
     'bt-submit-order': hl_btSubmitOrder,
     'bt-view-order': hl_btViewOrder,
     'table-details': hl_tblSelectDetail,
-    'table-orders': hl_tblOrders,    
+    'table-orders': hl_tblOrders,
 }
 
 
@@ -115,7 +115,6 @@ function clickHandler(evt) {
             break;
         }
     }
-    console.log(path);
     clickHandlers[id](evt);
 }
 
@@ -133,7 +132,7 @@ function initLabels() {
     }
 }
 
-function setupEventHandlers(){
+function setupEventHandlers() {
     // Window
     window.visualViewport.onresize = (evt) => {
         checkViewport();
