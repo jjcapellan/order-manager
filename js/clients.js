@@ -46,6 +46,11 @@ function hl_btCancelClient() {
     scrollToAnchor('clients');
 }
 
+function hl_btClientsBack() {
+    scrollToAnchor('menu');
+    unselectRows();
+}
+
 function hl_btDelClient() {
     const rowIndex = clientsTable.getAttribute('data-row');
     if (rowIndex == '') {
@@ -191,6 +196,7 @@ function updateClient(client) {
 export {
     hl_btAddClient,
     hl_btCancelClient,
+    hl_btClientsBack,
     hl_btDelClient,
     hl_btEditClient,
     hl_btSubmitClient,

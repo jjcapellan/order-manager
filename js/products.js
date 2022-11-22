@@ -89,6 +89,11 @@ function hl_btEditProduct() {
 
 }
 
+function hl_btProductsBack() {
+    scrollToAnchor('menu');
+    unselectRows();
+}
+
 function hl_btSubmitProduct(evt) {
     evt.preventDefault();
     if (formTitle.innerHTML == label.NEW_PRODUCT) {
@@ -286,6 +291,7 @@ export {
     hl_btCancelProductView,
     hl_btDelProduct,
     hl_btEditProduct,
+    hl_btProductsBack,
     hl_btSubmitProduct,
     hl_btViewProduct,
     hl_iPhoto,

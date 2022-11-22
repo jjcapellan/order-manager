@@ -84,6 +84,11 @@ function hl_btEditOrder() {
     unselectRows();
 }
 
+function hl_btOrdersBack() {
+    scrollToAnchor('menu');
+    unselectRows();
+}
+
 function hl_btSelectClient() {
     screenForm.setAttribute('data-active', 'true');
     scrollToAnchor('clients');
@@ -304,6 +309,7 @@ export {
     hl_btCancelOrder,
     hl_btDelOrder,
     hl_btEditOrder,
+    hl_btOrdersBack,
     hl_btSelectClient,
     hl_btSelectProduct,
     hl_btSubmitOrder,
