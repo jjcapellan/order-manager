@@ -222,8 +222,14 @@ function setOrderClient(client) {
 function changeDetail(rowIndex) {
     const amount = tbQty.value;
     const row = tblDetails.rows[rowIndex];
-    order.details[rowIndex - 1].qty = amount;
-    row.children[1].innerText = amount;
+
+    if (amount && amount != '0') {
+        order.details[rowIndex - 1].qty = amount;
+        row.children[1].innerText = amount;
+    } else {
+        order.details.splice(rowIndex - 1, 1);
+        row.remove();
+    }
 
     tbQty.value = '';
     popupQty.setAttribute('hidden', '');
