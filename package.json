@@ -6,7 +6,7 @@
   "context": "browser",
   "scripts": {
     "start": "parcel -p 5500",
-    "build": "parcel build --no-source-maps",
+    "build": "parcel build --no-source-maps --dist-dir docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
