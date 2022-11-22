@@ -1,0 +1,20 @@
+### Node ###
+# Logs
+logs
+*.log
+.pnpm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
