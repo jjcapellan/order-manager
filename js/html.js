@@ -110,11 +110,12 @@ function clickHandler(evt) {
     // -4 -> body-html-document-window
     for (let i = 0; i < path.length - 4; i++) {
         let el = path[i];
-        if (el.classList[0] == 'clhl') {
+        if (el.classList.contains('clhl')) {
             id = el.id;
             break;
         }
     }
+    console.log(path);
     clickHandlers[id](evt);
 }
 
