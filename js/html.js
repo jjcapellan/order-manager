@@ -124,7 +124,7 @@ function clickHandler(evt) {
 function checkViewport() {
     const height = Math.round(window.visualViewport.height + window.visualViewport.offsetTop);
     document.getElementById('css').innerHTML = `div.wrapper{height:${height}px;}`;
-    scrollToAnchor(location.hash.substring(1));
+    scrollToAnchor(window.currentAnchor);
 }
 
 function initLabels() {
