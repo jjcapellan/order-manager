@@ -22,6 +22,7 @@ import {
     hl_btSubmitProduct,
     hl_btViewProduct,
     hl_iPhoto,
+    hl_iPhotoClick,
     hl_iProductName,
     hl_iProductPrice,
     hl_tblProducts,
@@ -151,6 +152,7 @@ function setupEventHandlers() {
     document.getElementById('product-view').addEventListener('click', clickHandler);
     document.getElementById('screen-form-product').addEventListener('click', clickHandler);
     document.getElementById('form-product').addEventListener('submit', hl_btSubmitProduct);
+    document.getElementById('photo').addEventListener('click', hl_iPhotoClick);
     document.getElementById('photo').addEventListener('change', hl_iPhoto);
     document.getElementById('product-name').addEventListener('change', hl_iProductName);
     document.getElementById('product-price').addEventListener('change', hl_iProductPrice);

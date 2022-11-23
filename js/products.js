@@ -27,14 +27,20 @@ let productId = null;
 //
 //
 //
-//// PUBLIC INIT FUNCTION ////
-//////////////////////////////
+//// PUBLIC FUNCTIONS ////
+//////////////////////////
 //
 //
 //
 
 function initProducts() {
     populateProductsList();
+}
+
+function restoreProductForm(_product, _title) {
+    populateProductForm(_product);
+    formTitle.innerHTML = _title;
+    scrollToAnchor('screen-form-product');
 }
 
 //
@@ -54,6 +60,8 @@ function hl_btAddProduct() {
 
 function hl_btCancelProduct() {
     resetProduct();
+    localStorage.removeItem('product');
+    localStorage.removeItem('title');
     scrollToAnchor('products');
 }
 
@@ -111,6 +119,8 @@ function hl_btSubmitProduct(evt) {
         null
     );
     db.execTasks();
+    localStorage.removeItem('product');
+    localStorage.removeItem('title');
     populateProductsList();
     scrollToAnchor('products');
 }
@@ -131,6 +141,11 @@ function hl_btViewProduct() {
     );
     db.execTasks();
     scrollToAnchor('product-view');
+}
+
+function hl_iPhotoClick() {
+    localStorage.setItem('product', JSON.stringify(product));
+    localStorage.setItem('title', formTitle.innerHTML);
 }
 
 async function hl_iPhoto(evt) {
@@ -294,9 +309,11 @@ export {
     hl_btProductsBack,
     hl_btSubmitProduct,
     hl_btViewProduct,
+    hl_iPhotoClick,
     hl_iPhoto,
     hl_iProductName,
     hl_iProductPrice,
     hl_tblProducts,
     initProducts,
+    restoreProductForm,
 };
