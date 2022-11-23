@@ -4,9 +4,12 @@ import { initClients } from './clients.js';
 import { initProducts } from './products.js';
 import { initOrders } from './orders.js';
 
+window.currentAnchor = 'menu';
+
 window.scrollToAnchor = (anchor) => {
     if (anchor == '') return;
     const el = document.getElementById(anchor);
+    window.currentAnchor = anchor;
     el.scrollIntoView({ inline: 'start' });
 }
 window.onload = () => {
