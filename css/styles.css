@@ -177,6 +177,12 @@ tr {
     max-height: 95%;
 }
 
+#version {
+    margin-top: 20px;
+    font-size: small;
+    color: var(--color-darker);
+}
+
 /*
 
 .string:
