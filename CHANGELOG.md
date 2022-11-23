@@ -1,3 +1,15 @@
+# v0.1.0-alpha.7
+## New features
+* **Order detail deleted if quantity is zero**
+## Fixes
+* **Not expected return to menu screen**
+* **Wrong SVG icons after page reload**: now png images are used instead svg format.
+* **Wrong handler for button "select client"**
+* **Button "view product" causes error if the product has not image**
+* **Row still selected after return from menu**
+
+---
+
 # v0.1.0-alpha.6
 ## New features
 * **Optimization of images**: selected or captured images are resized to device size and compressed.
