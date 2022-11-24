@@ -3,6 +3,7 @@ const language = navigator.language.substring(0, 2);
 const spStr = {
     AMOUNT: 'CANTIDAD',
     CLIENTS: 'CLIENTES',
+    DELETE_CONFIRM: '¿Eliminar este elemento?',
     EDIT_CLIENT: 'MODIFICAR CLIENTE',
     EDIT_ORDER: 'MODIFICAR PEDIDO',
     EDIT_PRODUCT: 'MODIFICAR PRODUCTO',
@@ -22,6 +23,7 @@ const spStr = {
 const enStr = {
     AMOUNT: 'AMOUNT',
     CLIENTS: 'CLIENTS',
+    DELETE_CONFIRM: 'Delete this item?',
     EDIT_CLIENT: 'EDIT_CLIENT',
     EDIT_ORDER: 'EDIT ORDER',
     EDIT_PRODUCT: 'EDIT PRODUCT',

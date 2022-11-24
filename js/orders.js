@@ -56,6 +56,9 @@ function hl_btDelOrder() {
         alert('No order selected');
         return;
     }
+    if (!window.confirm(label.DELETE_CONFIRM)) {
+        return;
+    }
     const tr = ordersTable.rows[rowIndex];
     const orderId = tr.children[0].getAttribute('data-id');
     ordersTable.setAttribute('data-row', '');

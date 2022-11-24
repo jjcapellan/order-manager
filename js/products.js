@@ -77,6 +77,9 @@ function hl_btDelProduct() {
         alert('No product selected');
         return;
     }
+    if (!window.confirm(label.DELETE_CONFIRM)) {
+        return;
+    }
     productStore.del(+_productId);
     db.execTasks();
 }

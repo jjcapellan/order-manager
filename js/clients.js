@@ -57,6 +57,9 @@ function hl_btDelClient() {
         alert('No client selected');
         return;
     }
+    if (!window.confirm(label.DELETE_CONFIRM)) {
+        return;
+    }
     const tr = clientsTable.rows[rowIndex];
     const clientId = tr.children[0].getAttribute('data-id');
     clientsTable.setAttribute('data-row', '');
