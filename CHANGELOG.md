@@ -1,7 +1,17 @@
+# v0.1.0-alpha.9
+## New features
+* **Delete confirmation popups**
+## Changes
+* **Placeholders replaced by labels**: usefull when editing existing element.
+
+---
+
 # v0.1.0-alpha.8
 ## Fixes
 * **Unwanted scroll to menu screen**: caused by resize event.
 * **Missing data after forced page reload**: This can happen in the product form when a photo is taken (camera app causes a low memory event and the OS closes the browser).
+
+---
 
 # v0.1.0-alpha.7
 ## New features
