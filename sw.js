@@ -21,7 +21,7 @@ self.addEventListener('activate', e => e.waitUntil(activate()));
 
 self.addEventListener('fetch', (e) => {
   e.respondWidth(
-    matches(e.request)
+    caches.match(e.request)
       .then((res) => {
         return res || fetch(e.request);
       })
