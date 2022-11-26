@@ -8,6 +8,7 @@ import { manifest, version } from '@parcel/service-worker';
 async function install() {
   const cache = await caches.open(version);
   await cache.addAll(manifest);
+  await cache.add('/order-manager/'); // <-- not included in manifest
 }
 self.addEventListener('install', e => e.waitUntil(install()));
 
@@ -32,11 +33,10 @@ self.addEventListener("fetch", (e) => {
       const cachedResponse = await cache.match(e.request);
 
       if (cachedResponse) {
-        e.waitUntil(cache.add(e.request));
         return cachedResponse;
       }
 
-      return fetch(e.request);
+      return fetch(e.request).catch(() => { console.log('Not found') });
     })()
   );
 });

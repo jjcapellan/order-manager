@@ -5,14 +5,13 @@
     "background_color": "#e6e5a3",
     "display": "standalone",
     "orientation": "portrait",
-    "scope": "https://jjcapellan.github.io/order-manager/",
-    "start_url": "https://jjcapellan.github.io/order-manager/",
+    "start_url": "/order-manager/",
     "icons": [
         {
             "src": "icon.svg",
-            "type":"image/svg+xml",
-            "sizes":"any",
-            "purpose":"maskable any"
+            "type": "image/svg+xml",
+            "sizes": "any",
+            "purpose": "maskable any"
         }
     ]
-  }
+}
