@@ -1,3 +1,9 @@
+# v0.1.0-alpha.10
+## New features
+* **PWA capabilities**
+
+---
+
 # v0.1.0-alpha.9
 ## New features
 * **Delete confirmation popups**
