@@ -19,12 +19,24 @@ async function activate() {
 }
 self.addEventListener('activate', e => e.waitUntil(activate()));
 
-self.addEventListener('fetch', (e) => {
-  e.respondWidth(
-    caches.match(e.request)
-      .then((res) => {
-        return res || fetch(e.request);
-      })
-      .catch(console.log)
+/**
+ * Info:
+ * https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent
+ */
+self.addEventListener("fetch", (e) => {
+  if (e.request.method !== "GET") return;
+
+  e.respondWith(
+    (async () => {
+      const cache = await caches.open(version);
+      const cachedResponse = await cache.match(e.request);
+
+      if (cachedResponse) {
+        e.waitUntil(cache.add(e.request));
+        return cachedResponse;
+      }
+
+      return fetch(e.request);
+    })()
   );
 });
