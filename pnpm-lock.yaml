@@ -1,9 +1,17 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@parcel/core': '>=2.8.0 <3.0.0'
+  '@parcel/packager-raw-url': ^2.8.0
+  '@parcel/service-worker': ^2.8.0
+  '@parcel/transformer-webmanifest': ^2.8.0
   parcel: ^2.8.0
 
 devDependencies:
+  '@parcel/core': 2.8.0
+  '@parcel/packager-raw-url': 2.8.0_@parcel+core@2.8.0
+  '@parcel/service-worker': 2.8.0
+  '@parcel/transformer-webmanifest': 2.8.0_@parcel+core@2.8.0
   parcel: 2.8.0
 
 packages:
@@ -516,6 +524,16 @@ packages:
       - '@parcel/core'
     dev: true
 
+  /@parcel/packager-raw-url/2.8.0_@parcel+core@2.8.0:
+    resolution: {integrity: sha512-6NM1Ib9BLEEQo7v6P/VWVYGhPbwuq5IGYb1de4lBCtsrrw1chHg3cEucLdHf9+c3zgsiALK2M8wjTpoz5LN0JA==}
+    engines: {node: '>= 12.0.0', parcel: ^2.8.0}
+    dependencies:
+      '@parcel/plugin': 2.8.0_@parcel+core@2.8.0
+      '@parcel/utils': 2.8.0
+    transitivePeerDependencies:
+      - '@parcel/core'
+    dev: true
+
   /@parcel/packager-raw/2.8.0_@parcel+core@2.8.0:
     resolution: {integrity: sha512-s3VniER3X2oNTlfytBGIQF+UZFVNLFWuVu1IkZ8Wg6uYQffrExDlbNDcmFCDcfvcejL3Ch5igP+L6N00f6+wAQ==}
     engines: {node: '>= 12.0.0', parcel: ^2.8.0}
@@ -621,6 +639,11 @@ packages:
       nullthrows: 1.1.1
     transitivePeerDependencies:
       - '@parcel/core'
+    dev: true
+
+  /@parcel/service-worker/2.8.0:
+    resolution: {integrity: sha512-fSz0+TApuFrJwshSQubaXABik1S/H0yUmP+U31ntsmJDb3g6FYY/pTdeM70p7l5XIHrQiVs01ee+Jx33labUsw==}
+    engines: {node: '>= 12.0.0', parcel: ^2.8.0}
     dev: true
 
   /@parcel/source-map/2.1.1:
@@ -783,6 +806,18 @@ packages:
       posthtml-parser: 0.10.2
       posthtml-render: 3.0.0
       semver: 5.7.1
+    transitivePeerDependencies:
+      - '@parcel/core'
+    dev: true
+
+  /@parcel/transformer-webmanifest/2.8.0_@parcel+core@2.8.0:
+    resolution: {integrity: sha512-80+LAlSOaibvD/yh60G4UquXH3wU306p2M46qTGyu1G9CyNZaKJDzHcohlPfu768fbvAvaePLY2RO1w221fg5w==}
+    engines: {parcel: ^2.8.0}
+    dependencies:
+      '@mischnic/json-sourcemap': 0.1.0
+      '@parcel/diagnostic': 2.8.0
+      '@parcel/plugin': 2.8.0_@parcel+core@2.8.0
+      '@parcel/utils': 2.8.0
     transitivePeerDependencies:
       - '@parcel/core'
     dev: true
