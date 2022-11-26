@@ -5,7 +5,7 @@
     "background_color": "#e6e5a3",
     "display": "standalone",
     "orientation": "portrait",
-    "scope": "/",
+    "scope": "https://jjcapellan.github.io/order-manager/",
     "start_url": "https://jjcapellan.github.io/order-manager/",
     "icons": [
         {
